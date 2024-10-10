@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.primary-color {
+  color: #9753d3;
+}
+
 .custom-btn {
   padding: 9px 30px;
   font-size: 18px;

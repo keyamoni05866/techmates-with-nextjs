@@ -41,7 +41,7 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="min-h-screen custom-bg">
+          <div className="min-h-screen ">
             <Navbar />
             <main className="  ">{children}</main>
           </div>
