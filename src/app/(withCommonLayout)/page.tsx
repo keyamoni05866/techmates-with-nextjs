@@ -8,5 +8,9 @@ import { title, subtitle } from "@/src/components/primitives";
 import { GithubIcon } from "@/src/components/icons";
 
 export default function Home() {
-  return <></>;
+  return (
+    <>
+      <h4>this is home page</h4>
+    </>
+  );
 }

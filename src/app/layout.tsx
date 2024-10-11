@@ -6,7 +6,7 @@ import { Providers } from "./providers";
 
 import { siteConfig } from "@/src/config/site";
 import { fontSans } from "@/src/config/fonts";
-import { Navbar } from "@/src/components/navbar";
+import { Navbar } from "@/src/components/UI/navbar";
 
 export const metadata: Metadata = {
   title: {
@@ -40,12 +40,11 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="min-h-screen ">
-            <Navbar />
-            <main className="  ">{children}</main>
-          </div>
-        </Providers>
+        <main className="min-h-screen ">
+          <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+            {children}
+          </Providers>
+        </main>
       </body>
     </html>
   );
