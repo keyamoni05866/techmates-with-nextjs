@@ -4,15 +4,49 @@ import Link from "next/link";
 
 import { Input } from "@nextui-org/input";
 import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useUserRegistration } from "@/src/hooks/auth.hook";
+import { useRouter } from "next/navigation";
+
+type InputFields = {
+  name: string;
+  email: string;
+  number: string;
+  password: string;
+};
+
 const Register = () => {
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<InputFields>();
+  const { mutate: registration } = useUserRegistration();
+  const router = useRouter();
+  const onSubmit: SubmitHandler<InputFields> = (data) => {
+    // console.log(data);
+    const userData = {
+      ...data,
+      profilePicture:
+        "https://tse3.mm.bing.net/th?id=OIP.x8fLW23S9NCHK5xbqWBfNQHaHa&pid=Api&P=0&h=220",
+    };
+
+    // console.log("Inside form user data: ", userData);
+
+    registration(userData);
+    reset();
+    router.push("/");
+  };
   return (
     <div className="h-[calc(100vh)] bg-[url('/register.jpg')] bg-cover bg-center">
-      {/* <Image src={bgImage} fill alt="register image" /> */}
-
       <div className="lg:max-w-[500px]   lg:ms-[53%] pt-[69px]  ">
-        <form className="bg-white p-10  rounded-xl shadow-xl">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="bg-white p-10  rounded-xl shadow-xl"
+        >
           <h4 className="primary-color text-3xl font-bold text-center uppercase">
             Sign Up
           </h4>
@@ -24,20 +58,18 @@ const Register = () => {
               <div className="mt-2 ">
                 <Input
                   isClearable
+                  {...register("name", { required: "Name is required" })}
                   type="text"
                   variant="bordered"
                   placeholder="Enter your Name"
-                  // onClear={() => console.log("input cleared")}
                   className="w-full  "
                 />
               </div>
-              {/* <div>
-              {errors.name && (
-              <p className="mt-2 text-sm text-red-600">
-                {errors.name.message}
-              </p>
-              
-            </div> */}
+              <div>
+                {errors.name && (
+                  <p className="mt-2 text-sm text-red-600">Name Is Required</p>
+                )}
+              </div>
             </div>
             <div>
               <label className="block text-sm text-gray-500 font-medium leading-6 ms-1 ">
@@ -46,19 +78,27 @@ const Register = () => {
               <div className="mt-2 ">
                 <Input
                   isClearable
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value:
+                        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
+                      message: "Invalid Email Address",
+                    },
+                  })}
                   type="email"
                   variant="bordered"
                   placeholder="Enter your Email"
-                  className="w-full  "
+                  className="w-full "
                 />
               </div>
-              {/* <div>
-              {errors.name && (
-              <p className="mt-2 text-sm text-red-600">
-                {errors.name.message}
-              </p>
-              
-            </div> */}
+              <div>
+                {errors.email && (
+                  <p className="mt-2 text-sm text-red-600">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
             </div>
             <div>
               <label className="block text-sm text-gray-500 font-medium leading-6 ms-1 ">
@@ -67,19 +107,20 @@ const Register = () => {
               <div className="mt-2 ">
                 <Input
                   isClearable
+                  {...register("number", { required: "Number is required" })}
                   type="text"
                   variant="bordered"
                   placeholder="Enter your Phone Number"
                   className="w-full  "
                 />
               </div>
-              {/* <div>
-              {errors.name && (
-              <p className="mt-2 text-sm text-red-600">
-                {errors.name.message}
-              </p>
-              
-            </div> */}
+              <div>
+                {errors.number && (
+                  <p className="mt-2 text-sm text-red-600">
+                    Number Is Required
+                  </p>
+                )}
+              </div>
             </div>
             <div>
               <label className="block text-sm text-gray-500 font-medium leading-6 ms-1 ">
@@ -88,6 +129,9 @@ const Register = () => {
               <div className="mt-2 ">
                 <Input
                   variant="bordered"
+                  {...register("password", {
+                    required: "Password is required",
+                  })}
                   placeholder="Enter your password"
                   endContent={
                     <button
@@ -138,13 +182,13 @@ const Register = () => {
                   className="w-full"
                 />
               </div>
-              {/* <div>
-              {errors.name && (
-              <p className="mt-2 text-sm text-red-600">
-                {errors.name.message}
-              </p>
-              
-            </div> */}
+              <div>
+                {errors.password && (
+                  <p className="mt-2 text-sm text-red-600">
+                    Password Is Required
+                  </p>
+                )}
+              </div>
             </div>
           </div>
 
