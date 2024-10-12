@@ -3,7 +3,7 @@ export type TUser = {
   email: string;
   role: "user" | "admin";
   password: string;
-  profilePicture?: string;
+  profilePicture: string;
   followers?: string;
   following?: string;
   verified?: boolean;

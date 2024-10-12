@@ -3,13 +3,17 @@
 import Link from "next/link";
 
 import { Input } from "@nextui-org/input";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useUserRegistration } from "@/src/hooks/auth.hook";
+
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import Loading from "../../UI/Loading";
 
+import { useRegisterUserMutation } from "@/src/redux/features/authApi/authApi";
+import { useAppDispatch } from "@/src/redux/hook";
+import { signUpUser } from "@/src/redux/features/auth/authSlice";
+
+import Cookies from 'js-cookie';
 type InputFields = {
   name: string;
   email: string;
@@ -27,37 +31,47 @@ const Register = () => {
     reset,
     formState: { errors },
   } = useForm<InputFields>();
-  const { mutate: registration, data, isLoading } = useUserRegistration();
 
-  useEffect(() => {
-    if (data && !data.success) {
-      toast.error(data.message);
-    } else if (data && data.success) {
-      router.push("/");
-      toast.success("User Registration Successful");
-    }
-  }, [data]);
+  const [registerUser] = useRegisterUserMutation();
+  const dispatch = useAppDispatch();
 
-  const onSubmit: SubmitHandler<InputFields> = (data) => {
+  const handleRegister: SubmitHandler<InputFields> = async (data) => {
     // console.log(data);
+    const toastId = toast.loading("Loading", { duration: 1000 });
     const userData = {
       ...data,
       profilePicture:
         "https://tse3.mm.bing.net/th?id=OIP.x8fLW23S9NCHK5xbqWBfNQHaHa&pid=Api&P=0&h=220",
     };
-
-    // console.log("Inside form user data: ", userData);
-
-    registration(userData);
-    reset();
+    try {
+      const res = await registerUser(userData).unwrap();
+      if (res.error) {
+        toast.error(res.error?.data?.message, { id: toastId });
+      } else {
+        toast.success("Registration Successful", {
+          id: toastId,
+          duration: 1000,
+        });
+        const userInfo = res?.data.user;
+        // console.log(userInfo);
+        const token = res?.data.token;
+        // console.log(res);
+        dispatch(signUpUser({ userInfo, token }));
+        Cookies.set('token', token)
+        router.push("/");
+      }
+    } catch (err) {
+      toast.error("User already exist", { id: toastId });
+    }
   };
+
   return (
     <>
-      {isLoading && <Loading />}
+      {/* {isLoading && <Loading />} */}
       <div className="h-[calc(100vh)] bg-[url('/register.jpg')] bg-cover bg-center">
         <div className="lg:max-w-[500px]   lg:ms-[53%] pt-[69px]  ">
           <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(handleRegister)}
             className="bg-white p-10  rounded-xl shadow-xl"
           >
             <h4 className="primary-color text-3xl font-bold text-center uppercase">

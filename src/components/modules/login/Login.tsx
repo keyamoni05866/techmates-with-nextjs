@@ -3,12 +3,16 @@
 import Link from "next/link";
 
 import { Input } from "@nextui-org/input";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { useLogin } from "@/src/hooks/auth.hook";
+
 import { toast } from "sonner";
-import Loading from "../../UI/Loading";
+
+import { useLoginUserMutation } from "@/src/redux/features/authApi/authApi";
+import { useAppDispatch } from "@/src/redux/hook";
+import { signInUser } from "@/src/redux/features/auth/authSlice";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const router = useRouter();
@@ -17,34 +21,32 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<FieldValues>();
-  const { mutate: loginUser, data, isLoading } = useLogin();
+  const [loginUser] = useLoginUserMutation();
+  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    if (data && !data.success) {
-      toast.error(data.message);
-    } else if (data && data.success) {
-      router.push("/");
-      toast.success("Login Successful");
-    }
-  }, [data]);
-
-  const handleLogin: SubmitHandler<FieldValues> = (data) => {
+  const handleLogin: SubmitHandler<FieldValues> = async (data) => {
     // console.log(data);
-    const userData = {
-      ...data,
-    };
-    loginUser(userData);
-
-    reset();
+    const toastId = toast.loading("Sign In", { duration: 1000 });
+    try {
+      const res = await loginUser(data).unwrap();
+      toast.success("logged In", { id: toastId, duration: 1000 });
+      const userInfo = res?.data?.user;
+      const token = res?.data?.token;
+      dispatch(signInUser({ userInfo, token }));
+      Cookies.set("token", token);
+      router.push("/");
+    } catch (err) {
+      toast.error(
+        "Something Went Wrong!! Please use valid email or provide correct password",
+        { id: toastId, duration: 3000 }
+      );
+    }
   };
 
   return (
     <>
-      {isLoading && <Loading />}
-
       <div className="h-[calc(100vh)] bg-[url('/login.jpg')] bg-cover bg-center">
         <div className="lg:max-w-[480px]   lg:ms-[10%] pt-[140px]  ">
           <form
