@@ -1,5 +1,6 @@
 "use client";
 
+import { logOut } from "@/src/services/AuthServices";
 import { Avatar } from "@nextui-org/avatar";
 import {
   Dropdown,
@@ -12,6 +13,10 @@ import { useRouter } from "next/navigation";
 
 export default function NavbarDropdown() {
   const router = useRouter();
+
+  const handleLogout = () => {
+    logOut();
+  };
 
   const handleNavigation = (pathname: string) => {
     router.push(pathname);
@@ -26,7 +31,12 @@ export default function NavbarDropdown() {
         <DropdownItem onClick={() => handleNavigation("/profile")}>
           Profile
         </DropdownItem>
-        <DropdownItem key="delete" className="text-danger" color="danger">
+        <DropdownItem
+          onClick={() => handleLogout()}
+          key="delete"
+          className="text-danger"
+          color="danger"
+        >
           Logout
         </DropdownItem>
       </DropdownMenu>
