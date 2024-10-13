@@ -29,8 +29,11 @@ const Login = () => {
   const handleLogin: SubmitHandler<FieldValues> = async (data) => {
     // console.log(data);
     const toastId = toast.loading("Sign In", { duration: 1000 });
+    const userData = {
+      ...data,
+    };
     try {
-      const res = await loginUser(data).unwrap();
+      const res = await loginUser(userData).unwrap();
       toast.success("logged In", { id: toastId, duration: 1000 });
       const userInfo = res?.data?.user;
       const token = res?.data?.token;

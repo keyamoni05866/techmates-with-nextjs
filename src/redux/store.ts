@@ -11,11 +11,11 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import storage from "redux-persist/lib/storage/session";
 import { baseApi } from "./Api/baseApi";
 
 const persistConfig = {
-  key: "auth",
+  key: "root",
   storage,
 };
 
@@ -33,6 +33,7 @@ export const store = configureStore({
       },
     }).concat(baseApi.middleware),
 });
+
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}

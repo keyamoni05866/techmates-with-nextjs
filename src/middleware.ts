@@ -16,7 +16,6 @@ export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const userToken = await getCurrentUser();
-  // console.log(userToken);
   // console.log(user);
   const user = userToken?.user;
 

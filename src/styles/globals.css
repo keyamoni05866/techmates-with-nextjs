@@ -7,7 +7,7 @@
 }
 
 .custom-btn {
-  padding: 9px 30px;
+  padding: 5px 20px;
   font-size: 18px;
   font-weight: 500;
   text-align: center;
@@ -27,4 +27,26 @@
 }
 .custom-bg {
   background-color: #efedf1;
+}
+
+.custom-outline-btn {
+  padding: 5px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  color: #051c34;
+  background-color: transparent;
+  border: 1px solid #9753d3;
+  border-radius: 20px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.custom-outline-btn:hover {
+  color: white;
+  background-color: #051c34;
 }

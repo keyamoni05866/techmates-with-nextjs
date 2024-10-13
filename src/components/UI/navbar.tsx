@@ -1,5 +1,8 @@
+"use client";
+
 import {
   Navbar as NextUINavbar,
+  NavbarBrand,
   NavbarContent,
   NavbarMenu,
   NavbarMenuToggle,
@@ -19,26 +22,28 @@ import logo from "@/src/assets/techMatesLogo.png";
 import { Avatar } from "@nextui-org/avatar";
 import NavbarDropdown from "./NavbarDropdown";
 
-
 export const Navbar = () => {
   return (
-    <NextUINavbar position="sticky" className="">
-      <NavbarItem className="mt-3">
-        <Link href="/" className="">
-          <Image
-            src={logo}
-            height={70}
-            width={70}
-            alt="website logo"
-            className="mb-3  relative"
-          />
-          <p className=" text-2xl text-gray-600  absolute left-[59px] bottom-5">
-            Tech<span className="primary-color">Mates</span>
-          </p>
-        </Link>
-      </NavbarItem>
+    <NextUINavbar isBordered position="sticky" className="bg-white">
+      <NavbarContent>
+        {" "}
+        <NavbarBrand className="mt-3">
+          <Link href="/">
+            <Image
+              src={logo}
+              height={70}
+              width={70}
+              alt="website logo"
+              className="mb-3  relative"
+            />
+            <p className=" text-2xl text-gray-600  absolute left-[59px] bottom-5">
+              Tech<span className="primary-color">Mates</span>
+            </p>
+          </Link>
+        </NavbarBrand>
+      </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4 ms-28 pt-3" justify="end">
+      <NavbarContent className="hidden sm:flex gap-4 ms-28 pt-5 pb-3 ">
         <NavbarItem className="">
           <Link href="/" className="block">
             <svg
@@ -83,18 +88,17 @@ export const Navbar = () => {
             >
               <path d="M 12 3 C 9.2504839 3 7 5.2504839 7 8 L 7 33 A 1.0001 1.0001 0 1 0 9 33 L 9 8 C 9 6.3315161 10.331516 5 12 5 L 38 5 C 38.56503 5 39 5.4349698 39 6 L 39 35 C 39 35.56503 38.56503 36 38 36 L 11.5 36 C 9.026562 36 7 38.026562 7 40.5 C 7 42.973438 9.026562 45 11.5 45 L 40 45 A 1.0001 1.0001 0 1 0 40 43 L 11.5 43 C 10.107438 43 9 41.892562 9 40.5 C 9 39.107438 10.107438 38 11.5 38 L 38 38 C 39.64497 38 41 36.64497 41 35 L 41 6 C 41 4.3550302 39.64497 3 38 3 L 12 3 z M 24.5 10.033203 C 23.052048 10.033203 21.840699 10.694109 21.089844 11.644531 C 20.338988 12.594954 20 13.790651 20 14.972656 C 20 16.154662 20.338988 17.348405 21.089844 18.298828 C 21.840699 19.249251 23.052048 19.910156 24.5 19.910156 C 25.947952 19.910156 27.159301 19.249251 27.910156 18.298828 C 28.661012 17.348405 29 16.154662 29 14.972656 C 29 13.790651 28.661012 12.594954 27.910156 11.644531 C 27.159301 10.694109 25.947952 10.033203 24.5 10.033203 z M 24.5 12.033203 C 25.38538 12.033203 25.924033 12.358438 26.339844 12.884766 C 26.755654 13.411093 27 14.185662 27 14.972656 C 27 15.759651 26.755654 16.532266 26.339844 17.058594 C 25.924033 17.584921 25.38538 17.910156 24.5 17.910156 C 23.61462 17.910156 23.075967 17.584921 22.660156 17.058594 C 22.244346 16.532266 22 15.759651 22 14.972656 C 22 14.185662 22.244346 13.411093 22.660156 12.884766 C 23.075967 12.358438 23.61462 12.033203 24.5 12.033203 z M 24.5 21 C 20.623496 21 17.231634 23.754724 16.042969 27.712891 A 1.0001 1.0001 0 1 0 17.957031 28.287109 C 18.920366 25.079276 21.570504 23 24.5 23 C 27.429496 23 30.079634 25.079276 31.042969 28.287109 A 1.0001 1.0001 0 1 0 32.957031 27.712891 C 31.768366 23.754724 28.376504 21 24.5 21 z"></path>
             </svg>
-            <h4 className="text-gray-400 text-[14px] text-center ">
+            <h4 className="text-gray-400 text-[14px] text-center  ">
               Contact Us
             </h4>
           </Link>
         </NavbarItem>
-
+        <NavbarItem className="pb-1">
+          <NavbarDropdown />
+        </NavbarItem>
         <NavbarItem></NavbarItem>
       </NavbarContent>
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
+      <NavbarContent className="hidden sm:flex sm:basis-full" justify="end">
         {/* <Input
           classNames={{
             base: "max-w-full sm:max-w-[10rem] h-10",
@@ -112,7 +116,9 @@ export const Navbar = () => {
           {/* <ThemeSwitch /> */}
         </NavbarItem>
         <NavbarItem className="">
-          <NavbarDropdown />
+          <Link href="/login" className="custom-btn ">
+            Login
+          </Link>
         </NavbarItem>
       </NavbarContent>
 

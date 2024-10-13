@@ -13,7 +13,7 @@ import { useRegisterUserMutation } from "@/src/redux/features/authApi/authApi";
 import { useAppDispatch } from "@/src/redux/hook";
 import { signUpUser } from "@/src/redux/features/auth/authSlice";
 
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 type InputFields = {
   name: string;
   email: string;
@@ -57,7 +57,7 @@ const Register = () => {
         const token = res?.data.token;
         // console.log(res);
         dispatch(signUpUser({ userInfo, token }));
-        Cookies.set('token', token)
+        Cookies.set("token", token);
         router.push("/");
       }
     } catch (err) {

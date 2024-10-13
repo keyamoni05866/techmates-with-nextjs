@@ -28,31 +28,30 @@ export default function NavbarDropdown() {
   };
 
   return (
-    <>
-      {user?.email ? (
-        <Dropdown>
-          <DropdownTrigger>
-            <Avatar src={user?.profilePicture} />
-          </DropdownTrigger>
-          <DropdownMenu aria-label="Static Actions">
-            <DropdownItem onClick={() => handleNavigation("/profile")}>
-              Profile
-            </DropdownItem>
-            <DropdownItem
-              onClick={handleLogOut}
-              key="delete"
-              className="text-danger"
-              color="danger"
-            >
-              Logout
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      ) : (
-        <Link href="/login" className="custom-btn ">
-          Login
-        </Link>
+    <div>
+      {user && user?.email && (
+        <div>
+          <Dropdown>
+            <DropdownTrigger>
+              <Avatar size="sm" src={user?.profilePicture} />
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Static Actions">
+              <DropdownItem onClick={() => handleNavigation("/profile")}>
+                Profile
+              </DropdownItem>
+              <DropdownItem
+                onClick={handleLogOut}
+                key="delete"
+                className="text-danger"
+                color="danger"
+              >
+                Logout
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+          <h4 className="text-gray-400 text-[14px] text-center ">Me</h4>
+        </div>
       )}
-    </>
+    </div>
   );
 }
