@@ -1,7 +1,9 @@
+import Profile from "@/src/components/modules/profile/profile";
+
 const UserProfilePage = () => {
   return (
     <div>
-      <h4>User Profile Pgae</h4>
+      <Profile />
     </div>
   );
 };

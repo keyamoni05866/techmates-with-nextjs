@@ -1,15 +1,16 @@
 "use client";
 
 import { currentUser } from "@/src/redux/features/auth/authSlice";
+
 import { useAppSelector } from "@/src/redux/hook";
-import { Button } from "@nextui-org/button";
-import { Divider } from "@nextui-org/divider";
+
 import Image from "next/image";
 
 const HomeSidebar = () => {
   const user = useAppSelector(currentUser);
+
   return (
-    <div className=" bg-white h-[350px] rounded-xl">
+    <div className=" bg-white rounded-xl h-full">
       <div>
         <div className="bg-gray-200 w-full h-[130px] relative"></div>
         <div className="">
@@ -28,18 +29,18 @@ const HomeSidebar = () => {
           </div>
         </div>
         {/* <div className="flex gap-4 ms-3 mt-32">
-          <h4 className="text-sm border-[2px] text-center rounded-full px-5 py-1">
-            Followers 10
-          </h4>
-          <h4 className="text-sm border-[2px] text-center rounded-full  px-5 py-1">
-            Following 10
-          </h4>
-        </div> */}
+              <h4 className="text-sm border-[2px] text-center rounded-full px-5 py-1">
+                Followers 10
+              </h4>
+              <h4 className="text-sm border-[2px] text-center rounded-full  px-5 py-1">
+                Following 10
+              </h4>
+            </div> */}
       </div>
 
       {/* <Divider className="my-3" /> */}
       <div className="mt-36 flex justify-between">
-        <button className="custom-outline-btn !text-md  flex justify-center items-center gap-1 ms-2">
+        <button className="custom-outline-btn !text-md  flex justify-center items-center  ms-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -56,7 +57,7 @@ const HomeSidebar = () => {
           </svg>
           Edit Profile{" "}
         </button>
-        <button className="px-[20px] py-[3px] bg-[#9753d3] text-white rounded-full !text-md me-2 flex justify-center items-center gap-1">
+        <button className="px-[20px] py-[3px] bg-[#9753d3] text-white rounded-full !text-md me-1 flex justify-center items-center gap-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -68,10 +69,10 @@ const HomeSidebar = () => {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+              d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
             />
           </svg>
-          Write Post
+          Visit Profile
         </button>
       </div>
     </div>
