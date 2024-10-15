@@ -2,7 +2,7 @@ import HomeSidebar from "@/src/components/modules/homeSidebar/homeSidebar";
 
 const HomePage = () => {
   return (
-    <div className="flex justify-between gap-10 mx-[50px] mt-10">
+    <div className="flex justify-between gap-10  mt-10">
       <div className="w-[25%]  h-[330px]">
         <HomeSidebar />
       </div>

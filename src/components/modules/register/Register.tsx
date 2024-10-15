@@ -57,7 +57,7 @@ const Register = () => {
         const token = res?.data.token;
         // console.log(res);
         dispatch(signUpUser({ userInfo, token }));
-        Cookies.set("token", token);
+        Cookies.set("token", token, { expires: 7 });
         router.push("/");
       }
     } catch (err) {

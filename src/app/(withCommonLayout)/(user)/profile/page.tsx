@@ -1,9 +1,11 @@
-import Profile from "@/src/components/modules/profile/profile";
+
+import ProfileContainer from "@/src/components/modules/profile/ProfileContainer";
 
 const UserProfilePage = () => {
   return (
     <div>
-      <Profile />
+    
+      <ProfileContainer />
     </div>
   );
 };

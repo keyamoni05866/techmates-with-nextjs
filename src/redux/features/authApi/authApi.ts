@@ -5,7 +5,6 @@ const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getSingleUser: builder.query({
       query: ({ id }) => {
-        console.log(id);
         return {
           url: `/auth/${id}`,
           method: "GET",

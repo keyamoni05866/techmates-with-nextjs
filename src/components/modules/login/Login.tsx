@@ -38,7 +38,7 @@ const Login = () => {
       const userInfo = res?.data?.user;
       const token = res?.data?.token;
       dispatch(signInUser({ userInfo, token }));
-      Cookies.set("token", token);
+      Cookies.set("token", token,{ expires: 7 });
       router.push("/");
     } catch (err) {
       toast.error(

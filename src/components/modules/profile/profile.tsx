@@ -1,16 +1,18 @@
 "use client";
 import { currentUser } from "@/src/redux/features/auth/authSlice";
 import { useAppSelector } from "@/src/redux/hook";
-import { Button } from "@nextui-org/button";
-import { Divider } from "@nextui-org/divider";
+
+
 
 import Image from "next/image";
-import TabsOptions from "./Tabs";
+
+import PostModal from "../../UI/postModal";
 
 const Profile = () => {
   const user = useAppSelector(currentUser);
+ 
   return (
-    <div className="bg-white mt-7 max-w-[950px]  mx-auto ">
+    <div className="bg-white mt-7 rounded-xl">
       <div className="flex justify-between w-full">
         <div className="w-[50%] ">
           <Image
@@ -61,23 +63,10 @@ const Profile = () => {
               </svg>
               Edit Profile{" "}
             </button>
-            <button className="px-[20px] py-[3px] bg-[#9753d3] text-white rounded-full !text-md  flex justify-center items-center gap-1">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-4"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
-                />
-              </svg>
-              Write Post
-            </button>
+           
+           
+              <PostModal />
+          
           </div>
 
           <div>
@@ -91,10 +80,6 @@ const Profile = () => {
             </h4>
           </div>
         </div>
-      </div>
-      <Divider className="mt-10 mb-5" />
-      <div className="">
-        <TabsOptions />
       </div>
     </div>
   );

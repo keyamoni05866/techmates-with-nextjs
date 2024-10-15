@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 export const getCurrentUser = async () => {
   const token = cookies().get("token")?.value;
 
-  console.log(token);
+  // console.log(token);
   let decodedToken = null;
 
   if (token) {
