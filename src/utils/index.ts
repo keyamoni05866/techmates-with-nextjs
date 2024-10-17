@@ -1,6 +1,3 @@
-import envConfig from "../config/envConfig";
-// const imageToken = process.env.IMAGE_UPLOAD_TOKEN;
-// console.log("inside image bb func=>", imageToken);
 export const ImageUploadFunc = async (file: File) => {
   const formData = new FormData();
   formData.append("image", file);

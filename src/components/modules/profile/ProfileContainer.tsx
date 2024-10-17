@@ -5,10 +5,10 @@ import TabsOptions from "./Tabs";
 
 const ProfileContainer = () => {
   return (
-    <div className=" max-w-[950px]  mx-auto ">
+    <div className=" min-h-screen">
       <Profile />
-      <Divider className="mt-7 mb-5" />
-      <div className="bg-white">
+
+      <div className="mt-10 rounded-xl">
         <TabsOptions />
       </div>
     </div>

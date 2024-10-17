@@ -7,7 +7,7 @@ import {
   ModalHeader,
   useDisclosure,
 } from "@nextui-org/modal";
-import CreatePost from "../modules/CreatPost/CreatePost";
+import CreatePost from "../../modules/CreatPost/CreatePost";
 
 const PostModal = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();

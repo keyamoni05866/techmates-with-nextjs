@@ -1,10 +1,22 @@
+import { useGetUsersPostsQuery } from "@/src/redux/Api/PostApi/postApi";
+import { TPost } from "@/src/types";
+import { Spinner } from "@nextui-org/spinner";
 import { Tab, Tabs } from "@nextui-org/tabs";
+import SinglePostCard from "./singlePostCard";
 const TabsOptions = () => {
+  const { data: usersPosts, isLoading } = useGetUsersPostsQuery({});
+
+  // if (isLoading) {
+  //   return (
+
+  //   );
+  // }
+
   return (
     <Tabs
       aria-label="Tabs variants"
       variant="underlined"
-      className="flex justify-center"
+      className="flex justify-center "
     >
       <Tab
         key="posts"
@@ -29,7 +41,23 @@ const TabsOptions = () => {
           </div>
         }
       >
-        <h4>my post</h4>
+        <div className="my-8 max-w-[800px] mx-auto">
+          {isLoading ? (
+            <div className="flex justify-center items-center h-64">
+              <Spinner color="secondary" />
+            </div>
+          ) : usersPosts?.data && usersPosts?.data?.length > 0 ? (
+            usersPosts?.data?.map((post: TPost) => (
+              <SinglePostCard post={post} key={post._id} />
+            ))
+          ) : (
+            <>
+              <h4 className="text-xl text-center font-semibold">
+                No Post Found!!!
+              </h4>
+            </>
+          )}
+        </div>
       </Tab>
       <Tab
         key="followers"

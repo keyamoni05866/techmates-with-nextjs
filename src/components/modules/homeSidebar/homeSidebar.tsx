@@ -43,7 +43,7 @@ const HomeSidebar = () => {
 
             {/* <Divider className="my-3" /> */}
             <div className="mt-36 flex justify-between">
-              <button className="custom-outline-btn !text-md  flex justify-center items-center  ms-2">
+              <button className="custom-outline-btn !text-md  flex justify-center items-center  ms-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -60,7 +60,7 @@ const HomeSidebar = () => {
                 </svg>
                 Edit Profile{" "}
               </button>
-              <button className="px-[20px] py-[3px] bg-[#9753d3] text-white rounded-full !text-md me-1 flex justify-center items-center gap-1">
+              <button className="px-[20px] py-[3px] bg-[#9753d3] text-white rounded-full !text-md me-4 flex justify-center items-center gap-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

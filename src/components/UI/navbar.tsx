@@ -4,48 +4,35 @@ import {
   Navbar as NextUINavbar,
   NavbarBrand,
   NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
   NavbarItem,
-  NavbarMenuItem,
 } from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
-import { Kbd } from "@nextui-org/kbd";
-import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
 
-import { siteConfig } from "@/src/config/site";
-import { ThemeSwitch } from "@/src/components/UI/theme-switch";
-import { SearchIcon } from "../icons";
+import { Link } from "@nextui-org/link";
+
 import Image from "next/image";
-import logo from "@/src/assets/techMatesLogo.png";
-import { Avatar } from "@nextui-org/avatar";
+import logo from "@/src/assets/techmatesLogo.png";
+
 import NavbarDropdown from "./NavbarDropdown";
 
 export const Navbar = () => {
   return (
-    <NextUINavbar isBordered position="sticky" className="bg-white">
-      <NavbarContent>
-        {" "}
-        <NavbarBrand className="mt-3">
-          <Link href="/">
-            <Image
-              src={logo}
-              height={70}
-              width={70}
-              alt="website logo"
-              className="mb-3  relative"
-            />
-            <p className=" text-2xl text-gray-600  absolute left-[59px] bottom-5">
-              Tech<span className="primary-color">Mates</span>
-            </p>
-          </Link>
-        </NavbarBrand>
-      </NavbarContent>
-
-      <NavbarContent className="hidden sm:flex gap-4 ms-28 pt-5 pb-3 ">
-        <NavbarItem className="">
-          <Link href="/" className="block">
+    <NextUINavbar position="static">
+      <NavbarBrand>
+        {/* <AcmeLogo /> */}
+        <Image
+          src={logo}
+          height={50}
+          width={50}
+          alt="website logo"
+          className="rounded-full bg-gray-200 "
+        />
+        <p className=" text-xl text-gray-600 ms-2 ">
+          Tech<span className="primary-color">Mates</span>
+        </p>
+      </NavbarBrand>
+      <NavbarContent className="hidden sm:flex gap-4 mt-3" justify="center">
+        <NavbarItem>
+          <Link href="/" className="block" aria-current="page">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -60,7 +47,7 @@ export const Navbar = () => {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="/about" className="block">
+          <Link href="/aboutUs" className="block" aria-current="page">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -76,7 +63,7 @@ export const Navbar = () => {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="/contact" className="block">
+          <Link href="/contactUs" className="block" aria-current="page">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -96,58 +83,14 @@ export const Navbar = () => {
         <NavbarItem className="pb-1">
           <NavbarDropdown />
         </NavbarItem>
-        <NavbarItem></NavbarItem>
       </NavbarContent>
-      <NavbarContent className="hidden sm:flex sm:basis-full" justify="end">
-        {/* <Input
-          classNames={{
-            base: "max-w-full sm:max-w-[10rem] h-10",
-            mainWrapper: "h-full",
-            input: "text-small",
-            inputWrapper:
-              "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-          }}
-          placeholder="Type to search..."
-          size="sm"
-          startContent={<SearchIcon size={18} />}
-          type="search"
-        /> */}
-        <NavbarItem className="hidden md:flex">
-          {/* <ThemeSwitch /> */}
-        </NavbarItem>
-        <NavbarItem className="">
+      <NavbarContent justify="end">
+        <NavbarItem className="hidden lg:flex">
           <Link href="/login" className="custom-btn ">
             Login
           </Link>
         </NavbarItem>
       </NavbarContent>
-
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        {/* <ThemeSwitch /> */}
-        <NavbarMenuToggle />
-      </NavbarContent>
-
-      <NavbarMenu>
-        <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
-                size="lg"
-              >
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
-        </div>
-      </NavbarMenu>
     </NextUINavbar>
   );
 };

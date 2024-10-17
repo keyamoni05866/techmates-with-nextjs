@@ -4,11 +4,13 @@ import { Input } from "@nextui-org/input";
 import { Select, SelectItem } from "@nextui-org/select";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { SelectorIcon } from "../../icons";
-import ReactQuill from "react-quill";
 import { useState } from "react";
 import { useAppSelector } from "@/src/redux/hook";
 import { currentUser } from "@/src/redux/features/auth/authSlice";
-import { ImageUploadFunc } from "@/src/utils/ImageUpload";
+import { ImageUploadFunc } from "@/src/utils";
+import dynamic from "next/dynamic";
+import { toast } from "sonner";
+import { useCreatePostMutation } from "@/src/redux/Api/PostApi/postApi";
 
 type closeModalType = {
   closeModal: () => void;
@@ -22,27 +24,41 @@ export type TPostData = {
   isPremium?: boolean;
 };
 
-export const categories = ["Vegetables", "Flowers", "Landscaping"];
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
+export const categories = [
+  "Web",
+  "Software Engineering",
+  "AI",
+  "Software & Networking",
+];
 const CreatePost: React.FC<closeModalType> = ({ closeModal }) => {
   const {
     register,
     handleSubmit,
-    reset,
+
     formState: { errors },
   } = useForm<TPostData>();
   const [value, setValue] = useState("");
   const user = useAppSelector(currentUser);
+  const [createPost] = useCreatePostMutation();
 
   const handlePost: SubmitHandler<TPostData> = async (data) => {
     // console.log(data, "quilt data=>", value);
+
     const author = user?._id;
+
+    if (value === "") {
+      toast.error("Please Write something In Content");
+    }
+
     if (data.image && data.image.length > 0) {
       try {
         const file = data.image[0] as any;
         const imageUrl = await ImageUploadFunc(file);
         data.image = imageUrl;
       } catch (error: any) {
-        // toast.error(error.data.message, { duration: 1000 });
+        toast.error(error.data.message, { duration: 1000 });
         return;
       }
     } else {
@@ -50,13 +66,21 @@ const CreatePost: React.FC<closeModalType> = ({ closeModal }) => {
     }
 
     const postData = {
+      title: data.title,
       content: value,
       category: data.category,
       image: data.image || null,
       isPremium: data.isPremium || false,
       author,
     };
-    console.log(postData);
+    // console.log(postData);
+    try {
+      const res = await createPost(postData).unwrap();
+      console.log(res);
+
+      toast.success(res.message, { duration: 3000 });
+      closeModal();
+    } catch (err: any) {}
   };
 
   return (
