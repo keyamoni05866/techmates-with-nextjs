@@ -1,8 +1,10 @@
+import ContactUs from "@/src/components/modules/ContactUs/ContactUs";
+
 const ContactPage = () => {
   return (
-    <div>
-      <h4>This is contact page </h4>
-    </div>
+    <>
+      <ContactUs />
+    </>
   );
 };
 

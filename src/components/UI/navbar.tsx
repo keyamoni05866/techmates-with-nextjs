@@ -13,6 +13,7 @@ import Image from "next/image";
 import logo from "@/src/assets/techmatesLogo.png";
 
 import NavbarDropdown from "./NavbarDropdown";
+import NavbarPostConditional from "./NavbarPostConditional";
 
 export const Navbar = () => {
   return (
@@ -47,7 +48,7 @@ export const Navbar = () => {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/aboutUs" className="block" aria-current="page">
+          <Link href="/about" className="block" aria-current="page">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -63,7 +64,7 @@ export const Navbar = () => {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/contactUs" className="block" aria-current="page">
+          <Link href="/contact" className="block" aria-current="page">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -85,11 +86,7 @@ export const Navbar = () => {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="/login" className="custom-btn ">
-            Login
-          </Link>
-        </NavbarItem>
+        <NavbarPostConditional />
       </NavbarContent>
     </NextUINavbar>
   );

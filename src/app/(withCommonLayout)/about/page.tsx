@@ -1,7 +1,9 @@
+import AboutUs from "@/src/components/modules/AboutUs/AboutUs";
+
 const AboutPage = () => {
   return (
     <div>
-      <h4>This is about Pgae</h4>
+      <AboutUs />
     </div>
   );
 };
