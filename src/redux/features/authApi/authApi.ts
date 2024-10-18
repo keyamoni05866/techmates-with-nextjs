@@ -1,17 +1,7 @@
-import { TResponseRedux, TUser } from "@/src/types";
 import { baseApi } from "../../Api/baseApi";
 
 const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getSingleUser: builder.query({
-      query: ({ id }) => {
-        return {
-          url: `/auth/${id}`,
-          method: "GET",
-        };
-      },
-      // providesTags: ["users"],
-    }),
     loginUser: builder.mutation({
       query: (body) => ({
         url: "/auth/signin",
@@ -31,8 +21,4 @@ const authApi = baseApi.injectEndpoints({
   }),
 });
 
-export const {
-  useLoginUserMutation,
-  useRegisterUserMutation,
-  useGetSingleUserQuery,
-} = authApi;
+export const { useLoginUserMutation, useRegisterUserMutation } = authApi;

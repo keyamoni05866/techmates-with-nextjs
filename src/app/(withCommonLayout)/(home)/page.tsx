@@ -1,15 +1,15 @@
+import AllPosts from "@/src/components/modules/AllPosts/AllPosts";
 import HomeSidebar from "@/src/components/modules/homeSidebar/homeSidebar";
-import envConfig from "@/src/config/envConfig";
 
 const HomePage = () => {
- 
   return (
-    <div className="flex justify-between gap-10  mt-10">
-      <div className="w-[25%]  h-[330px]">
+    <div className="lg:flex lg:justify-between ">
+      <div className="lg:w-[70%] w-full">
+        <AllPosts />
+      </div>
+      <div className="lg:w-[30%] w-full lg:me-10 mb-10">
         <HomeSidebar />
       </div>
-      <div className="w-[55%] bg-white   "></div>
-      <div className="w-[20%] bg-white h-[380px]"></div>
     </div>
   );
 };

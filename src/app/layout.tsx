@@ -33,7 +33,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <head />
       <body>
-        <main className="min-h-screen custom-bg ">
+        <main className="min-h-screen  ">
           <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
             {children}
           </Providers>

@@ -11,6 +11,7 @@ import swal from "sweetalert";
 import { toast } from "sonner";
 import { useDeletePostMutation } from "@/src/redux/Api/PostApi/postApi";
 import PostUpdateModal from "../../UI/PostModal/PostUpdateModal";
+import { Avatar } from "@nextui-org/avatar";
 const SinglePostCard = ({ post }: { post: TPost }) => {
   const { _id: postId, title, image, content } = post;
   // console.log(post);
@@ -34,17 +35,10 @@ const SinglePostCard = ({ post }: { post: TPost }) => {
 
   return (
     <Card className="w-full mb-8 px-4  py-3 shadow-md">
-      {/* <CardHeader className="flex gap-3"> */}
-
-      <div className="ms-1 flex justify-between">
-        <div className="flex items-center gap-2">
+      <div className="ms-2 mb-1 flex justify-between">
+        <div className="flex items-center gap-2 ">
           <Link href={`/singleUser/${authorId}`}>
-            <Image
-              alt="User Picture"
-              height={40}
-              src={profilePicture}
-              width={40}
-            />
+            <Avatar alt="User Picture" src={profilePicture} className="me-2" />
           </Link>
           <div>
             <h4 className="text-xl">{name}</h4>
@@ -85,13 +79,11 @@ const SinglePostCard = ({ post }: { post: TPost }) => {
         </div>
       </div>
 
-      {/* </CardHeader> */}
-
       <CardBody className="">
         <h4 className="text-2xl font-bold">{title}</h4>
-        <p className="text-lg font-light my-4 text-justify pe-4 ">
+        <div className="text-lg font-light my-4 text-justify pe-4 ">
           <QuilToNormalHTML content={content} maxLength={220} />
-        </p>
+        </div>
 
         {image && (
           <Link href={`/singlePost/${postId}`}>

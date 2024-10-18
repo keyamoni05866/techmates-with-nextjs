@@ -2,6 +2,13 @@ import { baseApi } from "../../Api/baseApi";
 
 const postApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    getAllPosts: builder.query({
+      query: () => ({
+        url: "/post",
+        method: "GET",
+      }),
+      providesTags: ["posts"],
+    }),
     getUsersPosts: builder.query({
       query: () => ({
         url: "/post/myPosts",
@@ -46,4 +53,5 @@ export const {
   useGetUsersPostsQuery,
   useDeletePostMutation,
   useUpdatePostMutation,
+  useGetAllPostsQuery,
 } = postApi;

@@ -16,7 +16,7 @@ import NavbarDropdown from "./NavbarDropdown";
 
 export const Navbar = () => {
   return (
-    <NextUINavbar position="static">
+    <NextUINavbar maxWidth="xl">
       <NavbarBrand>
         {/* <AcmeLogo /> */}
         <Image
