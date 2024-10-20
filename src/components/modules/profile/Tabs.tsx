@@ -6,12 +6,6 @@ import SinglePostCard from "./singlePostCard";
 const TabsOptions = () => {
   const { data: usersPosts, isLoading } = useGetUsersPostsQuery({});
 
-  // if (isLoading) {
-  //   return (
-
-  //   );
-  // }
-
   return (
     <Tabs
       aria-label="Tabs variants"

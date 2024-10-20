@@ -14,13 +14,13 @@ const Profile = () => {
   const { data: posts } = useGetUsersPostsQuery({});
 
   return (
-    <div className="bg-white mt-7 rounded-xl max-w-[1000px] mx-auto  ">
+    <div className="bg-white mt-9 rounded-xl max-w-[1000px] mx-auto  ">
       <div className="flex justify-between w-full ">
         <div className="flex justify-center items-center rounded-full mt-10">
           <Image
             src={user?.profilePicture as string}
             alt="Profile Picture"
-            className=" ms-10 rounded-full w-[320px] h-[280px] "
+            className=" ms-10 rounded-xl  w-[320px] h-[280px] "
           />
         </div>
         <div className="w-[50%] mt-8">

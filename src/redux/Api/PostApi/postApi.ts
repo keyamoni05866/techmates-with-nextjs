@@ -45,6 +45,16 @@ const postApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["posts"],
     }),
+
+    votePost: builder.mutation({
+      query: (postId) => {
+        return {
+          url: `/post/vote/${postId}`,
+          method: "PATCH",
+        };
+      },
+      invalidatesTags: ["posts"],
+    }),
   }),
 });
 
@@ -54,4 +64,5 @@ export const {
   useDeletePostMutation,
   useUpdatePostMutation,
   useGetAllPostsQuery,
+  useVotePostMutation,
 } = postApi;

@@ -7,10 +7,8 @@ export type TPost = {
   image?: string;
   category: string;
   author: TUser;
-  //   upVotes?: number;
-  //   upVotedUsers?: Types.ObjectId[];
-  //   downVotes?: number;
-  //   downVotedUsers?: Types.ObjectId[];
+  Votes?: number;
+  VotedUsers?: [];
   isPremium: boolean;
   comments?: [];
   updatedAt?: string;
