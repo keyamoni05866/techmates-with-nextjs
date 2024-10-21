@@ -9,6 +9,18 @@ const postApi = baseApi.injectEndpoints({
       }),
       providesTags: ["posts"],
     }),
+
+    getSinglePost: builder.query({
+      query: (id) => {
+        console.log("inside redux", id);
+        return {
+          url: `/post/${id}`,
+          method: "GET",
+        };
+      },
+      providesTags: ["posts"],
+    }),
+
     getUsersPosts: builder.query({
       query: () => ({
         url: "/post/myPosts",
@@ -46,6 +58,17 @@ const postApi = baseApi.injectEndpoints({
       invalidatesTags: ["posts"],
     }),
 
+    comment: builder.mutation({
+      query: ({ postId, comment }) => {
+        return {
+          url: `/post/comment/${postId}`,
+          method: "PATCH",
+          body: { comment },
+        };
+      },
+      invalidatesTags: ["posts"],
+    }),
+
     votePost: builder.mutation({
       query: (postId) => {
         return {
@@ -65,4 +88,6 @@ export const {
   useUpdatePostMutation,
   useGetAllPostsQuery,
   useVotePostMutation,
+  useGetSinglePostQuery,
+  useCommentMutation,
 } = postApi;

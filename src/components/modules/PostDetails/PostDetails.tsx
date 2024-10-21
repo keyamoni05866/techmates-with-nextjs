@@ -4,17 +4,19 @@ import { Image } from "@nextui-org/image";
 import Link from "next/link";
 import PostDetailsSidebar from "./PostDetailsSidebar";
 import QuilToNormalHTML from "../QuilToNormalHTML/QuilToNormalHTML";
+// import CardFooter from "../../UI/CardFooter";
 
 const PostDetails = ({ post }: { post: TPost }) => {
-  const { _id: postId, title, image, content, category } = post;
+  const { _id: postId, title, image, content, Votes } = post;
   // console.log(post);
   const { _id: authorId, name, email, profilePicture } = post?.author;
   return (
     <div className="lg:mx-9 my-10 p-5 lg:p-0">
       <div className=" lg:sticky lg:top-0  lg:z-20 ">
         <h4 className="lg:text-5xl text-xl font-bold">{title}</h4>
+
         <div className="lg:flex justify-between items-center ">
-          <div className="flex items-center gap-2 mt-4 mb-8 ">
+          <div className="flex items-center gap-2 mt-4 ">
             <Link href={`/singleUser/${authorId}`}>
               <Avatar
                 alt="User Picture"
@@ -38,9 +40,16 @@ const PostDetails = ({ post }: { post: TPost }) => {
             </div>
           </div>
 
-          <PostDetailsSidebar />
+          <PostDetailsSidebar post={post} />
         </div>
       </div>
+
+      <div className="flex justify-end me-10 mb-2">
+        <h4>
+          <span className="text-xl font-bold me-1">{Votes}</span>Votes
+        </h4>
+      </div>
+
       <div>
         <div className=" ">
           <Image
