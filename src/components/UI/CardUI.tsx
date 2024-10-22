@@ -73,8 +73,8 @@ const CardUI = ({ post }: { post: TPost }) => {
           <span className="text-md font-bold me-1">{Votes}</span>votes
         </h4>
         <h4 className="flex font-light hover:underline hover:text-primary-500 ">
-          <span className="text-md font-bold me-1 ">{comments?.length}</span>
-          <AllCommentsModal />
+          <span className="text-md font-bold me-1 ">{comments?.length}</span>{" "}
+          <AllCommentsModal comments={comments} post={post} />
         </h4>
       </div>
       <Divider />

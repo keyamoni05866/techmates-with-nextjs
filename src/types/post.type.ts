@@ -14,3 +14,13 @@ export type TPost = {
   updatedAt?: string;
   createdAt?: string;
 };
+
+export type TComment = {
+  _id: string;
+  comment: string;
+  user: TUser;
+  updatedAt?: string;
+  createdAt?: string;
+};
+
+export type TComments = TComment[] | undefined;
