@@ -9,6 +9,17 @@ const userApi = baseApi.injectEndpoints({
       }),
       providesTags: ["users"],
     }),
+
+    getSingleUser: builder.query({
+      query: (id) => {
+        console.log("inside redux", id);
+        return {
+          url: `/user/${id}`,
+          method: "GET",
+        };
+      },
+      providesTags: ["posts"],
+    }),
     createUser: builder.mutation({
       query: (body) => ({
         url: "/user/create-user",
@@ -41,4 +52,8 @@ const userApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useUpdateUserMutation, useGetUsersQuery } = userApi;
+export const {
+  useUpdateUserMutation,
+  useGetUsersQuery,
+  useGetSingleUserQuery,
+} = userApi;

@@ -28,6 +28,7 @@ const Profile = () => {
             <h4 className="text-4xl primary-color font-semibold">
               {user?.name}
             </h4>
+           
             <button className="text-sm border-[2px] border-dashed text-center rounded-full  px-5 py-1">
               Verify Now
             </button>

@@ -32,7 +32,10 @@ const CardUI = ({ post }: { post: TPost }) => {
             <Avatar alt="User Picture" src={profilePicture} className="me-2" />
           </Link>
           <div>
-            <h4 className="text-xl">{name}</h4>
+            <Link href={`/singleUser/${authorId}`}>
+              <h4 className="text-xl">{name}</h4>
+            </Link>
+
             <h4 className="text-sm text-gray-500 ">
               {new Date(post.createdAt!).toLocaleTimeString("en-US", {
                 hour12: true,

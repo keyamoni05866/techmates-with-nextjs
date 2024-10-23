@@ -36,7 +36,10 @@ const HomeSidebar = async () => {
                   />
                 </Link>
                 <div>
-                  <h4 className="text-xl">{user?.name}</h4>
+                  <Link href={`/singleUser/${user?._id}`}>
+                    <h4 className="text-xl">{user?.name}</h4>
+                  </Link>
+
                   <h4 className="text-sm text-gray-500 ">{user?.email}</h4>
                 </div>
               </div>

@@ -12,7 +12,7 @@ const postApi = baseApi.injectEndpoints({
 
     getSinglePost: builder.query({
       query: (id) => {
-        console.log("inside redux", id);
+        // console.log("inside redux", id);
         return {
           url: `/post/${id}`,
           method: "GET",
