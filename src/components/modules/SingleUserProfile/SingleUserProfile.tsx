@@ -1,5 +1,8 @@
+
 import { TPost, TUser } from "@/src/types";
 import { Image } from "@nextui-org/image";
+
+import FollowRelated from "./FollowRelated";
 
 const SingleUserProfile = ({
   user,
@@ -14,16 +17,21 @@ const SingleUserProfile = ({
         <Image
           src={user?.profilePicture as string}
           alt="Profile Picture"
-          className="   w-[240px] h-[240px]  border  rounded-full"
+          className=" w-[240px] h-[240px]  border  rounded-full"
         />
-        <div className=" ms-9 my-3">
-          <h4 className="text-4xl primary-color font-semibold ">
-            {user?.name}
-          </h4>
+
+        <div className="ms-9  my-3">
+          <div className="flex gap-2 ">
+            <h4 className="text-4xl primary-color font-semibold ">
+              {user?.name}
+            </h4>
+            <FollowRelated followingId={user?._id} />
+          </div>
+
           <h4 className="text-2xl ">{user?.email}</h4>
         </div>
       </div>
-      <div className=" ">
+      <div className=" ms-8">
         <div className="flex gap-10">
           <h4 className="text-md">
             <span className="font-semibold">{filterUserPosts?.length}</span>{" "}

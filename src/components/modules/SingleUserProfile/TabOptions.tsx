@@ -40,7 +40,7 @@ const TabOptions = ({ filterUserPosts }: { filterUserPosts: TPost[] }) => {
         ))
       ) : () } */}
 
-          {filterUserPosts.map((post: TPost) => (
+          {filterUserPosts?.map((post: TPost) => (
             <SingleUserPostCard post={post} key={post._id} />
           ))}
         </div>

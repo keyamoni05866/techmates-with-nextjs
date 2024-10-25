@@ -18,8 +18,26 @@ const userApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
-      providesTags: ["posts"],
+      providesTags: ["users"],
     }),
+
+    followUser: builder.mutation({
+      query: ({ followerId, followingId }) => ({
+        url: "/user/follow",
+        method: "PATCH",
+        body: { followerId, followingId },
+      }),
+      invalidatesTags: ["users"],
+    }),
+    unfollowUser: builder.mutation({
+      query: ({ followerId, followingId }) => ({
+        url: "/user/unfollow",
+        method: "PATCH",
+        body: { followerId, followingId },
+      }),
+      invalidatesTags: ["users"],
+    }),
+
     createUser: builder.mutation({
       query: (body) => ({
         url: "/user/create-user",
@@ -56,4 +74,6 @@ export const {
   useUpdateUserMutation,
   useGetUsersQuery,
   useGetSingleUserQuery,
+  useFollowUserMutation,
+  useUnfollowUserMutation,
 } = userApi;
