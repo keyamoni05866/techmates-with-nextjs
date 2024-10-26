@@ -64,7 +64,7 @@ const FollowRelated = ({ followingId }: { followingId: string }) => {
             <>
               <button
                 onClick={handleUnFollow}
-                className="text-sm px-5  border rounded-xl hover:bg-black hover:text-white "
+                className="text-sm px-6 py-2  border rounded-xl hover:bg-black hover:text-white "
               >
                 Unfollow
               </button>

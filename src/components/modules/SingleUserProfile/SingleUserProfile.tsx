@@ -1,4 +1,3 @@
-
 import { TPost, TUser } from "@/src/types";
 import { Image } from "@nextui-org/image";
 
@@ -12,26 +11,26 @@ const SingleUserProfile = ({
   filterUserPosts: TPost[];
 }) => {
   return (
-    <div className="  mt-4 ms-5 lg:fixed">
+    <div className="  mt-2  lg:fixed shadow-md border p-6 rounded-xl">
       <div className="my-2 ms-8 ">
         <Image
           src={user?.profilePicture as string}
           alt="Profile Picture"
-          className=" w-[240px] h-[240px]  border  rounded-full"
+          className=" w-[220px] h-[220px]  border  rounded-full mx-auto"
         />
+        <div className="ms-[65px] mt-2">
+          <FollowRelated followingId={user?._id} />
+        </div>
 
-        <div className="ms-9  my-3">
-          <div className="flex gap-2 ">
-            <h4 className="text-4xl primary-color font-semibold ">
-              {user?.name}
-            </h4>
-            <FollowRelated followingId={user?._id} />
-          </div>
+        <div className="ms-7    mb-3">
+          <h4 className="text-4xl primary-color font-semibold ">
+            {user?.name}
+          </h4>
 
           <h4 className="text-2xl ">{user?.email}</h4>
         </div>
       </div>
-      <div className=" ms-8">
+      <div className=" ">
         <div className="flex gap-10">
           <h4 className="text-md">
             <span className="font-semibold">{filterUserPosts?.length}</span>{" "}
