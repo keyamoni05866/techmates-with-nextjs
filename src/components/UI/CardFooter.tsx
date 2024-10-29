@@ -2,6 +2,7 @@ import { useVotePostMutation } from "@/src/redux/Api/PostApi/postApi";
 import { TPost } from "@/src/types";
 import { toast } from "sonner";
 import CreateCommentModal from "./CommentModal/CreateCommentModal";
+import ShareModal from "./ShareModal/ShareModal";
 
 const CardFooter = ({ post }: { post: TPost }) => {
   const { _id: postId } = post;
@@ -39,7 +40,9 @@ const CardFooter = ({ post }: { post: TPost }) => {
 
       <CreateCommentModal post={post} />
 
-      <div className="flex items-center">
+      <ShareModal post={post} />
+
+      {/* <div className="flex items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -55,7 +58,7 @@ const CardFooter = ({ post }: { post: TPost }) => {
           />
         </svg>
         <p className=" text-lg font-semibold ms-1 mt-1">Share</p>
-      </div>
+      </div> */}
     </>
   );
 };

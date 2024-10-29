@@ -9,12 +9,9 @@ import { Providers } from "../lib/Providers";
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    template: `%s - TechMates`,
   },
   description: siteConfig.description,
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export const viewport: Viewport = {
