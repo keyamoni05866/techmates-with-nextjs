@@ -69,7 +69,7 @@ const Register = () => {
     <>
       {/* {isLoading && <Loading />} */}
       <div className="h-[calc(100vh)] bg-[url('/register.jpg')] bg-cover bg-center">
-        <div className="lg:max-w-[500px]   lg:ms-[53%] pt-[69px]  ">
+        <div className="lg:max-w-[500px]   lg:ms-[53%] pt-[69px] px-4  ">
           <form
             onSubmit={handleSubmit(handleRegister)}
             className="bg-white p-10  rounded-xl shadow-xl"

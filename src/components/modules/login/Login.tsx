@@ -38,7 +38,7 @@ const Login = () => {
       const userInfo = res?.data?.user;
       const token = res?.data?.token;
       dispatch(signInUser({ userInfo, token }));
-      Cookies.set("token", token,{ expires: 7 });
+      Cookies.set("token", token, { expires: 7 });
       router.push("/");
     } catch (err) {
       toast.error(
@@ -51,7 +51,7 @@ const Login = () => {
   return (
     <>
       <div className="h-[calc(100vh)] bg-[url('/login.jpg')] bg-cover bg-center">
-        <div className="lg:max-w-[480px]   lg:ms-[10%] pt-[140px]  ">
+        <div className="lg:max-w-[480px]   lg:ms-[10%] pt-[140px] px-3 lg:px-0  ">
           <form
             onSubmit={handleSubmit(handleLogin)}
             className="bg-white p-10  rounded-xl shadow-xl"

@@ -16,9 +16,9 @@ import CardFooter from "../../UI/CardFooter";
 const SinglePostCard = ({ post }: { post: TPost }) => {
   const { _id: postId, title, image, content, Votes } = post;
   // console.log(post);
-  const { _id: authorId, name, email, profilePicture } = post.author;
+  const { name, profilePicture } = post.author;
   const [deletePost] = useDeletePostMutation();
-
+  // post delete operations
   const handleDelete = (id: string) => {
     swal({
       title: "Are you sure?",
@@ -38,9 +38,8 @@ const SinglePostCard = ({ post }: { post: TPost }) => {
     <Card className="w-full mb-8 px-4  py-3 shadow-md">
       <div className="ms-2 mb-1 flex justify-between">
         <div className="flex items-center gap-2 ">
-          <Link href={`/singleUser/${authorId}`}>
-            <Avatar alt="User Picture" src={profilePicture} className="me-2" />
-          </Link>
+          <Avatar alt="User Picture" src={profilePicture} className="me-2" />
+
           <div>
             <h4 className="text-xl">{name}</h4>
             <h4 className="text-sm text-gray-500 ">
@@ -81,13 +80,17 @@ const SinglePostCard = ({ post }: { post: TPost }) => {
       </div>
 
       <CardBody className="">
-        <h4 className="text-2xl font-bold">{title}</h4>
+        <Link href={`/${postId}`}>
+          <h4 className="text-2xl font-bold">{title}</h4>
+        </Link>
         <div className="text-lg font-light my-4 text-justify pe-4 ">
-          <QuilToNormalHTML content={content} maxLength={220} />
+          <Link href={`/${postId}`}>
+            <QuilToNormalHTML content={content} maxLength={220} />
+          </Link>
         </div>
 
         {image && (
-          <Link href={`/singlePost/${postId}`}>
+          <Link href={`/${postId}`}>
             <NextImage
               alt="Post Picture"
               src={image as string}

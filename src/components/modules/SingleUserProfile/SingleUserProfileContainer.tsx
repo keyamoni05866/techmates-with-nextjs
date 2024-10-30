@@ -15,7 +15,7 @@ const SingleUserProfileContainer = ({
         <SingleUserProfile user={user} filterUserPosts={filterUserPosts} />
       </div>
       <div className=" lg:w-[70%] w-full lg:me-10 mb-10">
-        <TabOptions filterUserPosts={filterUserPosts} />
+        <TabOptions filterUserPosts={filterUserPosts} user={user} />
       </div>
     </div>
   );

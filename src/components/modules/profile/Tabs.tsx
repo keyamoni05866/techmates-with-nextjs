@@ -1,21 +1,40 @@
 import { useGetUsersPostsQuery } from "@/src/redux/Api/PostApi/postApi";
-import { TPost } from "@/src/types";
+import { TPost, TUser } from "@/src/types";
 import { Spinner } from "@nextui-org/spinner";
 import { Tab, Tabs } from "@nextui-org/tabs";
 import SinglePostCard from "./singlePostCard";
+import { useAppSelector } from "@/src/redux/hook";
+import { currentUser } from "@/src/redux/features/auth/authSlice";
+import { useGetUsersQuery } from "@/src/redux/Api/UserApi/userApi";
+import SingleFollowersFollowingCard from "./singleFollowersFollowingCard";
+
 const TabsOptions = () => {
   const { data: usersPosts, isLoading } = useGetUsersPostsQuery({});
+  const user = useAppSelector(currentUser);
+  // console.log(user?.followers);
 
+  const { data: AllUsers, isLoading: UserLoading } = useGetUsersQuery({});
+  // console.log(AllUsers?.data);
+  const followersIds = user?.followers;
+  const followingIds = user?.following;
+  const getFollowers = AllUsers?.data?.filter((user: any) =>
+    followersIds?.includes(user._id)
+  );
+  // console.log(getFollowers);
+  const getFollowingUsers = AllUsers?.data?.filter((user: any) =>
+    followingIds?.includes(user._id)
+  );
+  // console.log(getFollowingUsers);
   return (
     <Tabs
       aria-label="Tabs variants"
-      variant="underlined"
-      className="flex justify-center "
+      variant="solid"
+      className="flex justify-center lg:fixed lg:z-20 lg:ms-4  "
     >
       <Tab
         key="posts"
         title={
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-1 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -35,7 +54,7 @@ const TabsOptions = () => {
           </div>
         }
       >
-        <div className="my-8 max-w-[800px] mx-auto">
+        <div className="lg:mt-16 mt-4 mb-6 max-w-[800px] mx-auto ">
           {isLoading ? (
             <div className="flex justify-center items-center h-64">
               <Spinner color="secondary" />
@@ -56,7 +75,7 @@ const TabsOptions = () => {
       <Tab
         key="followers"
         title={
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-1 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -76,7 +95,64 @@ const TabsOptions = () => {
           </div>
         }
       >
-        <h4>my followrs</h4>
+        <div className="lg:mt-16 mt-4  mx-auto ">
+          {UserLoading ? (
+            <div className="flex justify-center items-center h-64">
+              <Spinner color="secondary" />
+            </div>
+          ) : getFollowers && getFollowers?.length > 0 ? (
+            getFollowers?.map((user: TUser) => (
+              <SingleFollowersFollowingCard user={user} key={user?._id} />
+            ))
+          ) : (
+            <>
+              <h4 className="text-xl text-center font-semibold">
+                No Followers Found!!!
+              </h4>
+            </>
+          )}
+        </div>
+      </Tab>
+      <Tab
+        key="following"
+        title={
+          <div className="flex items-center space-x-1 ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"
+              />
+            </svg>
+
+            <span>Following</span>
+          </div>
+        }
+      >
+        <div className="lg:mt-16 mt-4  mx-auto ">
+          {UserLoading ? (
+            <div className="flex justify-center items-center h-64">
+              <Spinner color="secondary" />
+            </div>
+          ) : getFollowingUsers && getFollowingUsers?.length > 0 ? (
+            getFollowingUsers?.map((user: TUser) => (
+              <SingleFollowersFollowingCard user={user} key={user?._id} />
+            ))
+          ) : (
+            <>
+              <h4 className="text-xl text-center font-semibold">
+                No Following Found!!!
+              </h4>
+            </>
+          )}
+        </div>
       </Tab>
     </Tabs>
   );

@@ -99,12 +99,12 @@ const PostUpdateModal = ({ post }: { post: TPost }) => {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">
-                Update Your Post!!!
-              </ModalHeader>
-              <ModalBody>
+              <ModalBody className="my-3">
                 <form onSubmit={handleSubmit(handleUpdatePost)}>
-                  <div className="grid grid-cols-1  gap-2  mt-3 mb-4   ">
+                  <h4 className="text-center text-xl font-bold">
+                    Update Your Post
+                  </h4>
+                  <div className="grid lg:grid-cols-2 grid-cols-1  gap-2 mt-3   ">
                     <div>
                       <label className="block text-sm text-gray-500 font-medium leading-6 ms-1 ">
                         Title:
@@ -119,34 +119,7 @@ const PostUpdateModal = ({ post }: { post: TPost }) => {
                         />
                       </div>
                     </div>
-                    <div>
-                      <label className="block text-sm text-gray-500 font-medium leading-6 ms-1 ">
-                        Category:
-                      </label>
-                      <div className="mt-2 ">
-                        <select
-                          defaultValue={category}
-                          className=" block w-full rounded-md border-0 py-2 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6"
-                          {...register("category")}
-                        >
-                          {categories.map((category) => (
-                            <option key={category}>{category}</option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-sm text-gray-500 font-medium leading-6 ms-1 ">
-                        Describe Your Thought:
-                      </label>
-                      <div className="mt-2 ">
-                        <ReactQuill
-                          // defaultValue={post?.content}
-                          value={value}
-                          onChange={setValue}
-                        />
-                      </div>
-                    </div>
+
                     <div>
                       <label className="block text-sm text-gray-500 font-medium leading-6 ms-1 ">
                         Image:
@@ -160,21 +133,47 @@ const PostUpdateModal = ({ post }: { post: TPost }) => {
                         />
                       </div>
                     </div>
-                    <div className="flex items-center mt-3 ms-1">
-                      <input
-                        type="checkbox"
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                        {...register("isPremium")}
+                  </div>
+                  <div className="mt-3">
+                    <label className="block text-sm text-gray-500 font-medium leading-6 ms-1 ">
+                      Category:
+                    </label>
+                    <div className="mt-2 ">
+                      <select
+                        defaultValue={category}
+                        className=" block w-full rounded-md border-0 py-2 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 sm:text-sm sm:leading-6"
+                        {...register("category")}
+                      >
+                        {categories.map((category) => (
+                          <option key={category}>{category}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <div className="mt-3">
+                    <label className="block text-sm text-gray-500 font-medium leading-6 ms-1 ">
+                      Describe Your Thought:
+                    </label>
+                    <div className="mt-2 ">
+                      <ReactQuill
+                        // defaultValue={post?.content}
+                        value={value}
+                        onChange={setValue}
                       />
-                      <label className="ml-2 block text-sm ">
-                        Make Premium
-                      </label>
                     </div>
-                    <div className="mt-5">
-                      <button type="submit" className="custom-btn w-full">
-                        Post
-                      </button>
-                    </div>
+                  </div>
+                  <div className="flex items-center mt-3 ms-1">
+                    <input
+                      type="checkbox"
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                      {...register("isPremium")}
+                    />
+                    <label className="ml-2 block text-sm ">Make Premium</label>
+                  </div>
+                  <div className="mt-5">
+                    <button type="submit" className="custom-btn w-full">
+                      Post
+                    </button>
                   </div>
                 </form>
               </ModalBody>

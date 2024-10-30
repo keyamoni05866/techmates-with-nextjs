@@ -37,10 +37,12 @@ const SingleUserProfile = ({
             posts
           </h4>
           <h4 className="text-md ">
-            <span className="font-semibold">10</span> followers
+            <span className="font-semibold">{user.followers?.length}</span>{" "}
+            followers
           </h4>
           <h4 className="text-md ">
-            <span className="font-semibold">10</span> following
+            <span className="font-semibold">{user.following?.length}</span>{" "}
+            following
           </h4>
         </div>
 
