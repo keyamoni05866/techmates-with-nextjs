@@ -37,6 +37,16 @@ const userApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["users"],
     }),
+    payment: builder.mutation({
+      query: ({ paymentData }) => {
+        return {
+          url: "/user/payment",
+          method: "POST",
+          body: paymentData,
+        };
+      },
+      invalidatesTags: ["users"],
+    }),
 
     createUser: builder.mutation({
       query: (body) => ({
@@ -76,4 +86,5 @@ export const {
   useGetSingleUserQuery,
   useFollowUserMutation,
   useUnfollowUserMutation,
+  usePaymentMutation,
 } = userApi;

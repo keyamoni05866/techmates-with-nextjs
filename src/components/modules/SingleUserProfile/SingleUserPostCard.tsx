@@ -43,13 +43,18 @@ const SingleUserPostCard = ({ post }: { post: TPost }) => {
       </div>
 
       <CardBody className="">
-        <h4 className="lg:text-2xl text-lg font-bold">{title}</h4>
+        <Link href={`/${postId}`}>
+          <h4 className="lg:text-2xl text-lg font-bold">{title}</h4>
+        </Link>
+
         <div className="lg:text-lg text-md font-light my-4 text-justify pe-4 ">
-          <QuilToNormalHTML content={content} maxLength={220} />
+          <Link href={`/${postId}`}>
+            <QuilToNormalHTML content={content} maxLength={220} />
+          </Link>
         </div>
 
         {image && (
-          <Link href={`/singlePost/${postId}`}>
+          <Link href={`/${postId}`}>
             <NextImage
               alt="Post Picture"
               src={image as string}
