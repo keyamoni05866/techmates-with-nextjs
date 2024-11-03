@@ -87,4 +87,5 @@ export const {
   useFollowUserMutation,
   useUnfollowUserMutation,
   usePaymentMutation,
+  useDeleteUserMutation,
 } = userApi;

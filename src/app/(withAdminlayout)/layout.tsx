@@ -1,10 +1,16 @@
-const layout = ({ children }: { children: React.ReactNode }) => {
+import DashboardSidebar from "@/src/components/modules/Dashboard/DashboardSidebar/DashboardSidebar";
+
+const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <>
-      <h4>Admin page</h4>
-      <div className="">{children}</div>
-    </>
+    <div className="flex bg-gray-200">
+      <DashboardSidebar />
+
+      <div className="  w-full m-4   ">
+        <div className=" bg-white h-[80px] w-full p-10 rounded-xl  "></div>
+        <div className="bg-white w-full mt-3 rounded-xl">{children}</div>
+      </div>
+    </div>
   );
 };
 
-export default layout;
+export default AdminLayout;

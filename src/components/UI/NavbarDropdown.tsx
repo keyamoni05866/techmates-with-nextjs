@@ -36,9 +36,22 @@ export default function NavbarDropdown() {
               <Avatar size="sm" src={user?.profilePicture} />
             </DropdownTrigger>
             <DropdownMenu aria-label="Static Actions">
-              <DropdownItem onClick={() => handleNavigation("/profile")}>
-                Profile
-              </DropdownItem>
+              {user.role === "admin" ? (
+                <DropdownItem
+                  key="dashboard"
+                  onClick={() => handleNavigation("/admin")}
+                >
+                  Dashboard
+                </DropdownItem>
+              ) : (
+                <DropdownItem
+                  key="profile"
+                  onClick={() => handleNavigation("/profile")}
+                >
+                  Profile
+                </DropdownItem>
+              )}
+
               <DropdownItem
                 onClick={handleLogOut}
                 key="delete"
