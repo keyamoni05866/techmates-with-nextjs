@@ -58,6 +58,15 @@ const postApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["posts"],
     }),
+    deletePostByAdmin: builder.mutation({
+      query: (id) => {
+        return {
+          url: `/post/post-delete/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["posts"],
+    }),
 
     comment: builder.mutation({
       query: ({ postId, comment }) => {
@@ -115,4 +124,5 @@ export const {
   useCommentMutation,
   useUpdateCommentMutation,
   useCommentDeleteMutation,
+  useDeletePostByAdminMutation,
 } = postApi;

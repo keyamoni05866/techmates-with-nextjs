@@ -1,3 +1,4 @@
+import DashboardHeader from "@/src/components/modules/Dashboard/DashboardSidebar/DashboardHeader";
 import DashboardSidebar from "@/src/components/modules/Dashboard/DashboardSidebar/DashboardSidebar";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
@@ -6,7 +7,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
       <DashboardSidebar />
 
       <div className="  w-full m-4   ">
-        <div className=" bg-white h-[80px] w-full p-10 rounded-xl  "></div>
+        <DashboardHeader />
         <div className="bg-white w-full mt-3 rounded-xl">{children}</div>
       </div>
     </div>
