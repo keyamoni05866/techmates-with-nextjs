@@ -10,6 +10,13 @@ const postApi = baseApi.injectEndpoints({
       }),
       providesTags: ["posts"],
     }),
+    getUserAnalytics: builder.query({
+      query: () => ({
+        url: "/post/analytics",
+        method: "GET",
+      }),
+      providesTags: ["posts"],
+    }),
 
     getSinglePost: builder.query({
       query: (id) => {
@@ -125,4 +132,5 @@ export const {
   useUpdateCommentMutation,
   useCommentDeleteMutation,
   useDeletePostByAdminMutation,
+  useGetUserAnalyticsQuery,
 } = postApi;

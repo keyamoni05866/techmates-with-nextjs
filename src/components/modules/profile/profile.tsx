@@ -7,7 +7,10 @@ import { useAppSelector } from "@/src/redux/hook";
 import PostModal from "../../UI/PostModal/postModal";
 import UserUpdateModal from "../../UI/UserRelatedModal/UserUpdateModal";
 import { Image } from "@nextui-org/image";
-import { useGetUsersPostsQuery } from "@/src/redux/Api/PostApi/postApi";
+import {
+  useGetUserAnalyticsQuery,
+  useGetUsersPostsQuery,
+} from "@/src/redux/Api/PostApi/postApi";
 import {
   useGetUsersQuery,
   usePaymentMutation,
@@ -17,6 +20,8 @@ import { toast } from "sonner";
 const Profile = () => {
   const user = useAppSelector(currentUser);
   const { data: posts } = useGetUsersPostsQuery({});
+  const { data } = useGetUserAnalyticsQuery({});
+  console.log(data);
   const [payment] = usePaymentMutation();
   const { data: AllUsers } = useGetUsersQuery({});
   const verifiedUser = AllUsers?.data?.find((vUser: any) =>

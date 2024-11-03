@@ -13,8 +13,9 @@ import { useDeletePostMutation } from "@/src/redux/Api/PostApi/postApi";
 import PostUpdateModal from "../../UI/PostModal/PostUpdateModal";
 import { Avatar } from "@nextui-org/avatar";
 import CardFooter from "../../UI/CardFooter";
+import AllCommentsModal from "../../UI/CommentModal/AllCommentsModal";
 const SingleUserPostCard = ({ post }: { post: TPost }) => {
-  const { _id: postId, title, image, content, Votes } = post;
+  const { _id: postId, title, image, content, Votes, comments } = post;
   // console.log(post);
   const { _id: authorId, name, email, profilePicture } = post.author;
 
@@ -63,9 +64,13 @@ const SingleUserPostCard = ({ post }: { post: TPost }) => {
           </Link>
         )}
       </CardBody>
-      <div className="flex justify-between lg:mx-11 my-2 ">
-        <h4>
-          <span className="text-xl font-bold me-1">{Votes}</span>Votes
+      <div className="flex  justify-between lg:ms-11 me-4 mt-1 ">
+        <h4 className="font-light">
+          <span className="text-md font-bold me-1">{Votes}</span>votes
+        </h4>
+        <h4 className="flex font-light hover:underline hover:text-primary-500 ">
+          <span className="text-md font-bold me-1 ">{comments?.length}</span>{" "}
+          <AllCommentsModal comments={comments} post={post} />
         </h4>
       </div>
       <Divider />

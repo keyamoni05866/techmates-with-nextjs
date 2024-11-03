@@ -1,4 +1,7 @@
-import { useGetUsersPostsQuery } from "@/src/redux/Api/PostApi/postApi";
+import {
+  useGetUserAnalyticsQuery,
+  useGetUsersPostsQuery,
+} from "@/src/redux/Api/PostApi/postApi";
 import { TPost, TUser } from "@/src/types";
 import { Spinner } from "@nextui-org/spinner";
 import { Tab, Tabs } from "@nextui-org/tabs";
@@ -7,6 +10,7 @@ import { useAppSelector } from "@/src/redux/hook";
 import { currentUser } from "@/src/redux/features/auth/authSlice";
 import { useGetUsersQuery } from "@/src/redux/Api/UserApi/userApi";
 import SingleFollowersFollowingCard from "./singleFollowersFollowingCard";
+import Chart from "./Chart";
 
 const TabsOptions = () => {
   const { data: usersPosts, isLoading } = useGetUsersPostsQuery({});
@@ -25,6 +29,10 @@ const TabsOptions = () => {
     followingIds?.includes(user._id)
   );
   // console.log(getFollowingUsers);
+  const { data } = useGetUserAnalyticsQuery({});
+  console.log(data);
+  const analytics = data?.data;
+  // console.log(analytics);
   return (
     <Tabs
       aria-label="Tabs variants"
@@ -152,6 +160,33 @@ const TabsOptions = () => {
               </h4>
             </>
           )}
+        </div>
+      </Tab>
+      <Tab
+        key="analytics"
+        title={
+          <div className="flex items-center space-x-1 ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
+              />
+            </svg>
+
+            <span>Analytics</span>
+          </div>
+        }
+      >
+        <div className="lg:mt-16 mt-4  mx-auto ">
+          <Chart data={analytics} />
         </div>
       </Tab>
     </Tabs>

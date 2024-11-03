@@ -9,7 +9,7 @@ const ProfileContainer = () => {
       <div className="lg:w-[30%] w-full mb-5 mx-auto ">
         <Profile />
       </div>
-      <div className=" lg:w-[70%] w-full  mb-10 mt-4">
+      <div className=" lg:w-[70%] w-full  mb-10 ">
         <TabsOptions />
       </div>
     </div>
