@@ -1,27 +1,28 @@
 import Image from "next/image";
+import Link from "next/link";
+
 import aboutImage from "../../../assets/aboutUs/aboutUs.png";
 import teamImage from "../../../assets/aboutUs/team.jpg";
-import Link from "next/link";
 const AboutUs = () => {
   return (
     <div className="min-h-screen mb-20 mt-10 px-3 ">
       <div className="lg:flex">
         <div className="lg:w-[50%]">
-          <Image src={aboutImage} alt="About Us" width={550} height={450} />
+          <Image alt="About Us" height={450} src={aboutImage} width={550} />
         </div>
         <div className="lg:w-[50%] lg:mt-10 lg:px-0 px-2">
           <h4 className="lg:text-[50px] text-2xl ">Our Company Overview!!!!</h4>
           <p className="lg:text-lg mt-5 ">
             TechMates is a full-stack web platform designed for tech
             enthusiasts, providing a rich collection of expert advice, personal
-            experiences, and user-generated content. Whether you're
+            experiences, and user-generated content. Whether you were
             troubleshooting common technical issues or exploring the latest in
             software, gadgets, and digital tools, this platform offers practical
             solutions, detailed tutorials, and comprehensive reviews. Our goal
             is to help users stay ahead in the fast-paced world of technology by
             offering insights and recommendations that enhance their digital
-            lives. Whether you’re a beginner or a tech expert, there’s something
-            for everyone.
+            lives. Whether you were a beginner or a tech expert, there is
+            something for everyone.
           </p>
           <div className="flex gap-5 mt-5 ">
             <button className="custom-btn !rounded-md">Community</button>
@@ -82,9 +83,9 @@ const AboutUs = () => {
             bring you relevant, practical, and cutting-edge information. Our
             goal is to empower individuals with the knowledge they need to
             troubleshoot tech issues, explore new tools and gadgets, and enhance
-            their digital experiences. Whether it’s offering in-depth tutorials,
-            reviews, or tips on the latest apps and software, TechMates is here
-            to guide you
+            their digital experiences. Whether it is offering in-depth
+            tutorials, reviews, or tips on the latest apps and software,
+            TechMates is here to guide you
           </p>
           <div className="flex gap-5 mt-5 ">
             <Link href="/register">
@@ -96,11 +97,11 @@ const AboutUs = () => {
         </div>
         <div className="lg:w-[50%] rounded-xl lg:mt-0 mt-5 lg:ms-10">
           <Image
-            src={teamImage}
             alt="About Us"
-            width={550}
-            height={450}
             className="rounded-xl"
+            height={450}
+            src={teamImage}
+            width={550}
           />
         </div>
       </div>

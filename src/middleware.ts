@@ -1,5 +1,7 @@
-import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+
+import { NextResponse } from "next/server";
+
 import { getCurrentUser } from "./services/AuthServices";
 
 const AuthRoutes = ["/login", "/register"];
@@ -29,10 +31,12 @@ export default async function middleware(request: NextRequest) {
 
   if (user?.role && roleBasedRoutes[user?.role as Role]) {
     const routes = roleBasedRoutes[user?.role as Role];
+
     if (routes.some((route) => pathname.match(route))) {
       return NextResponse.next();
     }
   }
+
   return NextResponse.redirect(new URL("/", request.url));
 }
 

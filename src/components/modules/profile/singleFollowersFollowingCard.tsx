@@ -1,6 +1,7 @@
-import { TUser } from "@/src/types";
 import { Avatar } from "@nextui-org/avatar";
 import Link from "next/link";
+
+import { TUser } from "@/src/types";
 
 const SingleFollowersFollowingCard = ({ user }: { user: TUser }) => {
   return (
@@ -9,8 +10,8 @@ const SingleFollowersFollowingCard = ({ user }: { user: TUser }) => {
         <Link href={`/singleUser/${user?._id}`}>
           <Avatar
             alt="User Picture"
-            src={user?.profilePicture}
             className="me-2"
+            src={user?.profilePicture}
           />
         </Link>
         <div>

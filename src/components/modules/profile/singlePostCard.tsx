@@ -1,19 +1,20 @@
 "use client";
 
-import { TPost } from "@/src/types";
 import { Card, CardBody } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
-import Image from "next/image";
 import { Image as NextImage } from "@nextui-org/image";
 import Link from "next/link";
-import QuilToNormalHTML from "../QuilToNormalHTML/QuilToNormalHTML";
 import swal from "sweetalert";
 import { toast } from "sonner";
-import { useDeletePostMutation } from "@/src/redux/Api/PostApi/postApi";
-import PostUpdateModal from "../../UI/PostModal/PostUpdateModal";
 import { Avatar } from "@nextui-org/avatar";
+
+import PostUpdateModal from "../../UI/PostModal/PostUpdateModal";
+import QuilToNormalHTML from "../QuilToNormalHTML/QuilToNormalHTML";
 import CardFooter from "../../UI/CardFooter";
 import AllCommentsModal from "../../UI/CommentModal/AllCommentsModal";
+
+import { useDeletePostMutation } from "@/src/redux/Api/PostApi/postApi";
+import { TPost } from "@/src/types";
 const SinglePostCard = ({ post }: { post: TPost }) => {
   const { _id: postId, title, image, content, Votes, comments } = post;
   // console.log(post);
@@ -30,6 +31,7 @@ const SinglePostCard = ({ post }: { post: TPost }) => {
     }).then(async (willDelete) => {
       if (willDelete) {
         const res = await deletePost(id);
+
         toast.success(res.data?.message);
       }
     });
@@ -39,7 +41,7 @@ const SinglePostCard = ({ post }: { post: TPost }) => {
     <Card className="w-full mb-8 px-4  py-3 shadow-md">
       <div className="ms-2 mb-1 flex justify-between">
         <div className="flex items-center gap-2 ">
-          <Avatar alt="User Picture" src={profilePicture} className="me-2" />
+          <Avatar alt="User Picture" className="me-2" src={profilePicture} />
 
           <div>
             <h4 className="text-xl">{name}</h4>
@@ -62,17 +64,17 @@ const SinglePostCard = ({ post }: { post: TPost }) => {
             <PostUpdateModal post={post} />
             <button onClick={() => handleDelete(postId)}>
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
                 className="size-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.5}
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
+                  d="M6 18 18 6M6 6l12 12"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  d="M6 18 18 6M6 6l12 12"
                 />
               </svg>
             </button>
@@ -94,8 +96,8 @@ const SinglePostCard = ({ post }: { post: TPost }) => {
           <Link href={`/${postId}`}>
             <NextImage
               alt="Post Picture"
-              src={image as string}
               className="w-[1000px] h-[300px] "
+              src={image as string}
             />
           </Link>
         )}

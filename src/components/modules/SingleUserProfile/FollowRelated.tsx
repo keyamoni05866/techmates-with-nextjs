@@ -1,3 +1,5 @@
+import { toast } from "sonner";
+
 import {
   useFollowUserMutation,
   useUnfollowUserMutation,
@@ -8,8 +10,6 @@ import {
   signInUser,
 } from "@/src/redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/src/redux/hook";
-
-import { toast } from "sonner";
 
 const FollowRelated = ({ followingId }: { followingId: string }) => {
   const [followUser] = useFollowUserMutation();
@@ -27,10 +27,12 @@ const FollowRelated = ({ followingId }: { followingId: string }) => {
         followerId: loggedInUser?._id,
         followingId,
       }).unwrap();
+
       // console.log(res);
       if (res.success) {
         toast.success(`${res.message}`, { duration: 3000 });
         const userInfo = res.data?.user;
+
         dispatch(signInUser({ userInfo, token }));
       }
     } catch (err: any) {
@@ -45,10 +47,12 @@ const FollowRelated = ({ followingId }: { followingId: string }) => {
         followerId: loggedInUser?._id,
         followingId,
       }).unwrap();
+
       console.log(res);
       if (res.success) {
         toast.success(`${res.message}`, { duration: 3000 });
         const userInfo = res.data?.user;
+
         dispatch(signInUser({ userInfo, token }));
       }
     } catch (err: any) {
@@ -63,8 +67,8 @@ const FollowRelated = ({ followingId }: { followingId: string }) => {
           {isFollowing ? (
             <>
               <button
-                onClick={handleUnFollow}
                 className="text-sm px-6 py-2  border rounded-xl hover:bg-black hover:text-white "
+                onClick={handleUnFollow}
               >
                 Unfollow
               </button>
@@ -73,8 +77,8 @@ const FollowRelated = ({ followingId }: { followingId: string }) => {
             <>
               {" "}
               <button
-                onClick={handleFollow}
                 className="text-sm px-5  border rounded-xl hover:bg-black hover:text-white "
+                onClick={handleFollow}
               >
                 Follow
               </button>

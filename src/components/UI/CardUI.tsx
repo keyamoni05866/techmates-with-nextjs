@@ -1,14 +1,15 @@
-import { TPost } from "@/src/types";
 import { Card, CardBody } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
-
 import { Image as NextImage } from "@nextui-org/image";
 import Link from "next/link";
-import QuilToNormalHTML from "../modules/QuilToNormalHTML/QuilToNormalHTML";
 import { Avatar } from "@nextui-org/avatar";
+
+import QuilToNormalHTML from "../modules/QuilToNormalHTML/QuilToNormalHTML";
 
 import CardFooter from "./CardFooter";
 import AllCommentsModal from "./CommentModal/AllCommentsModal";
+
+import { TPost } from "@/src/types";
 
 const CardUI = ({ post }: { post: TPost }) => {
   const {
@@ -29,7 +30,7 @@ const CardUI = ({ post }: { post: TPost }) => {
       <div className="ms-1 ">
         <div className="flex items-center gap-2">
           <Link href={`/singleUser/${authorId}`}>
-            <Avatar alt="User Picture" src={profilePicture} className="me-2" />
+            <Avatar alt="User Picture" className="me-2" src={profilePicture} />
           </Link>
           <div>
             <Link href={`/singleUser/${authorId}`}>
@@ -66,8 +67,8 @@ const CardUI = ({ post }: { post: TPost }) => {
         <Link href={`/${postId}`}>
           <NextImage
             alt="Post Picture"
-            src={image as string}
             className="w-[1000px] h-[300px] "
+            src={image as string}
           />
         </Link>
       </CardBody>

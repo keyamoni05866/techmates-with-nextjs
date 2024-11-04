@@ -26,9 +26,10 @@ const Chart: FC<AnalyticsChartProps> = ({ data }) => {
     { name: "Comments", comments: data.totalComments },
     { name: "Views", views: data.totalViews },
   ];
+
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <BarChart width={600} height={300} data={chartData}>
+    <ResponsiveContainer height={400} width="100%">
+      <BarChart data={chartData} height={300} width={500}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />

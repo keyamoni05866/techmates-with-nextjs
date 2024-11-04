@@ -3,13 +3,15 @@ import "react-quill/dist/quill.snow.css";
 import { Input } from "@nextui-org/input";
 import { Select, SelectItem } from "@nextui-org/select";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { SelectorIcon } from "../../icons";
 import { useState } from "react";
+import dynamic from "next/dynamic";
+import { toast } from "sonner";
+
+import { SelectorIcon } from "../../icons";
+
 import { useAppSelector } from "@/src/redux/hook";
 import { currentUser } from "@/src/redux/features/auth/authSlice";
 import { ImageUploadFunc } from "@/src/utils";
-import dynamic from "next/dynamic";
-import { toast } from "sonner";
 import { useCreatePostMutation } from "@/src/redux/Api/PostApi/postApi";
 
 type closeModalType = {
@@ -56,9 +58,11 @@ const CreatePost: React.FC<closeModalType> = ({ closeModal }) => {
       try {
         const file = data.image[0] as any;
         const imageUrl = await ImageUploadFunc(file);
+
         data.image = imageUrl;
       } catch (error: any) {
         toast.error(error.data.message, { duration: 1000 });
+
         return;
       }
     } else {
@@ -73,9 +77,11 @@ const CreatePost: React.FC<closeModalType> = ({ closeModal }) => {
       isPremium: data.isPremium || false,
       author,
     };
+
     // console.log(postData);
     try {
       const res = await createPost(postData).unwrap();
+
       console.log(res);
 
       toast.success(res.message, { duration: 3000 });
@@ -88,17 +94,20 @@ const CreatePost: React.FC<closeModalType> = ({ closeModal }) => {
       <form onSubmit={handleSubmit(handlePost)}>
         <div className="grid grid-cols-1  gap-2  mt-3 mb-4   ">
           <div>
-            <label className="block text-sm text-gray-500 font-medium leading-6 ms-1 ">
+            <label
+              className="block text-sm text-gray-500 font-medium leading-6 ms-1 "
+              htmlFor="title"
+            >
               Title:
             </label>
             <div className="mt-2 ">
               <Input
                 isClearable
                 {...register("title", { required: "Title is required" })}
+                className="w-full  "
+                placeholder="Title"
                 type="text"
                 variant="bordered"
-                placeholder="Title"
-                className="w-full  "
               />
             </div>
             <div>
@@ -108,16 +117,19 @@ const CreatePost: React.FC<closeModalType> = ({ closeModal }) => {
             </div>
           </div>
           <div>
-            <label className="block text-sm text-gray-500 font-medium leading-6 ms-1 ">
+            <label
+              className="block text-sm text-gray-500 font-medium leading-6 ms-1 "
+              htmlFor="category"
+            >
               Category:
             </label>
             <div className="mt-2 ">
               <Select
+                disableSelectorIconRotation
                 aria-label="Select a category"
                 className="w-full"
-                variant="bordered"
-                disableSelectorIconRotation
                 selectorIcon={<SelectorIcon />}
+                variant="bordered"
                 {...register("category", { required: "category is required" })}
               >
                 {categories.map((category) => (
@@ -134,7 +146,10 @@ const CreatePost: React.FC<closeModalType> = ({ closeModal }) => {
             </div>
           </div>
           <div>
-            <label className="block text-sm text-gray-500 font-medium leading-6 ms-1 ">
+            <label
+              className="block text-sm text-gray-500 font-medium leading-6 ms-1 "
+              htmlFor="description"
+            >
               Describe Your Thought:
             </label>
             <div className="mt-2 ">
@@ -142,25 +157,30 @@ const CreatePost: React.FC<closeModalType> = ({ closeModal }) => {
             </div>
           </div>
           <div>
-            <label className="block text-sm text-gray-500 font-medium leading-6 ms-1 ">
+            <label
+              className="block text-sm text-gray-500 font-medium leading-6 ms-1 "
+              htmlFor="image"
+            >
               Image:
             </label>
             <div className="mt-2 ">
               <Input
                 {...register("image")}
+                className="w-full  "
                 type="file"
                 variant="bordered"
-                className="w-full  "
               />
             </div>
           </div>
           <div className="flex items-center mt-3 ms-1">
             <input
-              type="checkbox"
               className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              type="checkbox"
               {...register("isPremium")}
             />
-            <label className="ml-2 block text-sm ">Make Premium</label>
+            <label className="ml-2 block text-sm " htmlFor="isPremium">
+              Make Premium
+            </label>
           </div>
           <div className="mt-5">
             <button className="custom-btn w-full">Post</button>

@@ -1,8 +1,10 @@
-import { TComments, TPost } from "@/src/types";
 import { useDisclosure } from "@nextui-org/modal";
-import { Modal, ModalBody, ModalContent, ModalHeader } from "@nextui-org/modal";
+import { Modal, ModalBody, ModalContent } from "@nextui-org/modal";
+
 import SingleComment from "./SingleComment";
 import CreateCommentModal from "./CreateCommentModal";
+
+import { TComments, TPost } from "@/src/types";
 
 const AllCommentsModal = ({
   comments,
@@ -16,7 +18,7 @@ const AllCommentsModal = ({
 
   return (
     <div>
-      <button onClick={onOpen} className="flex items-center">
+      <button className="flex items-center" onClick={onOpen}>
         <p className="">comments</p>
       </button>
 
@@ -29,9 +31,9 @@ const AllCommentsModal = ({
                 {comments?.length ? (
                   comments?.map((singleComment) => (
                     <SingleComment
+                      key={singleComment?._id}
                       post={post}
                       singleComment={singleComment}
-                      key={singleComment?._id}
                     />
                   ))
                 ) : (

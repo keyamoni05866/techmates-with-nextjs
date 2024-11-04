@@ -1,5 +1,5 @@
 "use client";
-import { Divider } from "@nextui-org/divider";
+
 import Profile from "./profile";
 import TabsOptions from "./Tabs";
 

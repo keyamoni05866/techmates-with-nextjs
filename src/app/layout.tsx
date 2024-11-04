@@ -1,17 +1,11 @@
 import "@/src/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import clsx from "clsx";
 
-import { siteConfig } from "@/src/config/site";
-import { fontSans } from "@/src/config/fonts";
 import { Providers } from "../lib/Providers";
 
 export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - TechMates`,
-  },
-  description: siteConfig.description,
+  title: "TechMates",
+  description: "Welcome to TechMates",
 };
 
 export const viewport: Viewport = {
@@ -30,7 +24,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <head />
       <body>
-        <main className="min-h-screen  ">
+        <main className="min-h-screen">
           <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
             {children}
           </Providers>

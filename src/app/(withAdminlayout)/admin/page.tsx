@@ -3,9 +3,10 @@
 import { useGetAllPostsQuery } from "@/src/redux/Api/PostApi/postApi";
 import { useGetUsersQuery } from "@/src/redux/Api/UserApi/userApi";
 
-const page = () => {
+const AdminHomePage = () => {
   const { data: AllPosts } = useGetAllPostsQuery({});
   const { data: AllUsers } = useGetUsersQuery({});
+
   return (
     <div className="p-10 ">
       {" "}
@@ -25,7 +26,7 @@ const page = () => {
 
         <div className="shadow-md rounded-xl">
           <div className="p-10 text-center">
-            <div className="text-xl font-semibold">Total User's</div>
+            <div className="text-xl font-semibold">Total Users</div>
             <div className="text-2xl font-bold">{AllUsers?.data?.length}</div>
           </div>
         </div>
@@ -34,4 +35,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default AdminHomePage;

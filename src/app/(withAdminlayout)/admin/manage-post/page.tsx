@@ -1,6 +1,6 @@
 import ManagePost from "@/src/components/modules/Dashboard/ManagePost/ManagePost";
 
-const page = () => {
+const ManagePostPage = () => {
   return (
     <div>
       <ManagePost />
@@ -8,4 +8,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ManagePostPage;

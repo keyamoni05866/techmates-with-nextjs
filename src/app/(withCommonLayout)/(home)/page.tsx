@@ -1,5 +1,6 @@
+import HomeSidebar from "../../../components/modules/homeSidebar/HomeSidebar";
+
 import AllPosts from "@/src/components/modules/AllPosts/AllPosts";
-import HomeSidebar from "@/src/components/modules/homeSidebar/homeSidebar";
 
 const HomePage = () => {
   return (

@@ -1,30 +1,27 @@
 "use client";
 
-import { TPost } from "@/src/types";
 import { Card, CardBody } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider";
-import Image from "next/image";
 import { Image as NextImage } from "@nextui-org/image";
 import Link from "next/link";
-import QuilToNormalHTML from "../QuilToNormalHTML/QuilToNormalHTML";
-import swal from "sweetalert";
-import { toast } from "sonner";
-import { useDeletePostMutation } from "@/src/redux/Api/PostApi/postApi";
-import PostUpdateModal from "../../UI/PostModal/PostUpdateModal";
 import { Avatar } from "@nextui-org/avatar";
+
+import QuilToNormalHTML from "../QuilToNormalHTML/QuilToNormalHTML";
 import CardFooter from "../../UI/CardFooter";
 import AllCommentsModal from "../../UI/CommentModal/AllCommentsModal";
+
+import { TPost } from "@/src/types";
 const SingleUserPostCard = ({ post }: { post: TPost }) => {
   const { _id: postId, title, image, content, Votes, comments } = post;
   // console.log(post);
-  const { _id: authorId, name, email, profilePicture } = post.author;
+  const { _id: authorId, name, profilePicture } = post.author;
 
   return (
     <Card className="w-full mb-8 px-4  py-3 shadow-md">
       <div className="ms-2 mb-1 flex justify-between">
         <div className="flex items-center gap-2 ">
           <Link href={`/singleUser/${authorId}`}>
-            <Avatar alt="User Picture" src={profilePicture} className="me-2" />
+            <Avatar alt="User Picture" className="me-2" src={profilePicture} />
           </Link>
           <div>
             <h4 className="text-xl">{name}</h4>
@@ -58,8 +55,8 @@ const SingleUserPostCard = ({ post }: { post: TPost }) => {
           <Link href={`/${postId}`}>
             <NextImage
               alt="Post Picture"
-              src={image as string}
               className="w-[1000px] h-[300px] "
+              src={image as string}
             />
           </Link>
         )}

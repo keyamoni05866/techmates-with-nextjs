@@ -1,12 +1,14 @@
 "use client";
 
-import { useGetAllPostsQuery } from "@/src/redux/Api/PostApi/postApi";
-import { TPost } from "@/src/types";
 import { Spinner } from "@nextui-org/spinner";
-import CardUI from "../../UI/CardUI";
 import { useState } from "react";
-import { SearchIcon } from "../../icons";
 import { Input } from "@nextui-org/input";
+
+import CardUI from "../../UI/CardUI";
+import { SearchIcon } from "../../icons";
+
+import { TPost } from "@/src/types";
+import { useGetAllPostsQuery } from "@/src/redux/Api/PostApi/postApi";
 
 export const categories = [
   "Web",
@@ -21,6 +23,7 @@ const AllPosts = () => {
     searchQuery,
     selectedCategory,
   });
+
   //   console.log(AllPosts);
   return (
     // <div>
@@ -45,7 +48,7 @@ const AllPosts = () => {
               }`}
               onClick={() =>
                 setSelectedCategory(
-                  category === selectedCategory ? "All" : category
+                  category === selectedCategory ? "All" : category,
                 )
               }
             >
@@ -55,8 +58,6 @@ const AllPosts = () => {
         </div>
         <div className="">
           <Input
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
             classNames={{
               base: "max-w-full sm:max-w-[10rem] h-10",
               mainWrapper: "h-full",
@@ -68,6 +69,8 @@ const AllPosts = () => {
             size="sm"
             startContent={<SearchIcon size={18} />}
             type="search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
       </div>
@@ -78,7 +81,7 @@ const AllPosts = () => {
         </div>
       ) : AllPosts?.data && AllPosts?.data?.length > 0 ? (
         AllPosts?.data?.map((post: TPost) => (
-          <CardUI post={post} key={post._id} />
+          <CardUI key={post._id} post={post} />
         ))
       ) : (
         <>

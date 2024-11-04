@@ -1,16 +1,18 @@
 "use client";
 
-import PostDetails from "@/src/components/modules/PostDetails/PostDetails";
-import { useGetSinglePostQuery } from "@/src/redux/Api/PostApi/postApi";
 import { Spinner } from "@nextui-org/spinner";
 
-const page = ({ params }: { params: { singlePost: string } }) => {
+import PostDetails from "@/src/components/modules/PostDetails/PostDetails";
+import { useGetSinglePostQuery } from "@/src/redux/Api/PostApi/postApi";
+
+const SinglePostPage = ({ params }: { params: { singlePost: string } }) => {
   const { singlePost } = params;
   const { data: postData, isLoading } = useGetSinglePostQuery(singlePost);
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <Spinner size="lg" color="default" />
+        <Spinner color="default" size="lg" />
       </div>
     );
   }
@@ -23,4 +25,4 @@ const page = ({ params }: { params: { singlePost: string } }) => {
   );
 };
 
-export default page;
+export default SinglePostPage;

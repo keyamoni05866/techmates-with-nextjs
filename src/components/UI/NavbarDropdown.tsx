@@ -1,7 +1,5 @@
 "use client";
 
-import { currentUser, logOutUser } from "@/src/redux/features/auth/authSlice";
-import { useAppDispatch, useAppSelector } from "@/src/redux/hook";
 import { Avatar } from "@nextui-org/avatar";
 import {
   Dropdown,
@@ -10,9 +8,10 @@ import {
   DropdownTrigger,
 } from "@nextui-org/dropdown";
 import Cookies from "js-cookie";
-import Link from "next/link";
-
 import { useRouter } from "next/navigation";
+
+import { useAppDispatch, useAppSelector } from "@/src/redux/hook";
+import { currentUser, logOutUser } from "@/src/redux/features/auth/authSlice";
 
 export default function NavbarDropdown() {
   const router = useRouter();
@@ -53,10 +52,10 @@ export default function NavbarDropdown() {
               )}
 
               <DropdownItem
-                onClick={handleLogOut}
                 key="delete"
                 className="text-danger"
                 color="danger"
+                onClick={handleLogOut}
               >
                 Logout
               </DropdownItem>

@@ -1,13 +1,16 @@
 "use client";
 
-import { currentUser } from "@/src/redux/features/auth/authSlice";
-import { useAppSelector } from "@/src/redux/hook";
 import { NavbarItem } from "@nextui-org/navbar";
 import Link from "next/link";
+
 import PostModal from "./PostModal/postModal";
+
+import { useAppSelector } from "@/src/redux/hook";
+import { currentUser } from "@/src/redux/features/auth/authSlice";
 
 const NavbarPostConditional = () => {
   const user = useAppSelector(currentUser);
+
   return (
     <>
       {user ? (
@@ -19,7 +22,7 @@ const NavbarPostConditional = () => {
       ) : (
         <>
           <NavbarItem className="hidden lg:flex">
-            <Link href="/login" className="custom-btn ">
+            <Link className="custom-btn " href="/login">
               Login
             </Link>
           </NavbarItem>

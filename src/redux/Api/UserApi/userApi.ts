@@ -13,6 +13,7 @@ const userApi = baseApi.injectEndpoints({
     getSingleUser: builder.query({
       query: (id) => {
         console.log("inside redux", id);
+
         return {
           url: `/user/${id}`,
           method: "GET",

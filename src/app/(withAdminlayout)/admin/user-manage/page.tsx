@@ -1,5 +1,5 @@
 import ManageUser from "@/src/components/modules/Dashboard/ManageUser/ManageUser";
-const page = () => {
+const ManagePostPage = () => {
   return (
     <div>
       <ManageUser />
@@ -7,4 +7,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ManagePostPage;
