@@ -19,6 +19,7 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<FieldValues>();
   const [loginUser] = useLoginUserMutation();
@@ -44,151 +45,176 @@ const Login = () => {
     } catch (err) {
       toast.error(
         "Something Went Wrong!! Please use valid email or provide correct password",
-        { id: toastId, duration: 3000 },
+        { id: toastId, duration: 3000 }
       );
     }
   };
+  const handleSetAdminValue = async () => {
+    setValue("email", "admin@gmail.com");
+    setValue("password", "123456");
+    toast.success("Demo Admin Credentials autofilled", { duration: 2000 });
+  };
+
+  const handleSetUserValue = async () => {
+    setValue("email", "keya@gmail.com");
+    setValue("password", "123456");
+    toast.success("Demo User Credentials autofilled", { duration: 2000 });
+  };
 
   return (
-    <>
-      <div className="h-[calc(100vh)] bg-[url('/login.jpg')] bg-cover bg-center">
-        <div className="lg:max-w-[480px]   lg:ms-[10%] pt-[140px] px-3 lg:px-0  ">
-          <form
-            className="bg-white p-10  rounded-xl shadow-xl"
-            onSubmit={handleSubmit(handleLogin)}
-          >
-            <h4 className="primary-color text-3xl font-bold text-center uppercase">
-              Sign In
-            </h4>
-            <div className="grid grid-cols-1  gap-2  mt-3 mb-4   ">
+    <div className=" bg-gray-100  px-3 lg:px-0 min-h-screen     flex justify-center items-center">
+      <div className="    w-full lg:w-[40%]  ">
+        <form
+          className="bg-white p-4 lg:p-10  rounded-xl shadow-x  "
+          onSubmit={handleSubmit(handleLogin)}
+        >
+          <h4 className="primary-color text-3xl font-bold text-center uppercase">
+            Sign In
+          </h4>
+          <div className="flex justify-center lg:justify-end mb-4 mt-5   gap-2  ">
+            <button
+              onClick={handleSetUserValue}
+              type="button"
+              className="px-3  py-1 border border-gray-500 rounded-2xl text-md hover:bg-[#051c34] hover:text-white  "
+            >
+              User Credentials
+            </button>
+            <button
+              onClick={handleSetAdminValue}
+              type="button"
+              className="px-3 py-1 bg-[#9753d3] hover:bg-[#713f9c] text-white border rounded-2xl text-md"
+            >
+              Admin Credentials
+            </button>
+          </div>
+          <div className="grid grid-cols-1  gap-2  mt-3 mb-4   ">
+            <div>
+              <label
+                className="block text-sm text-gray-500 font-medium leading-6 ms-1 "
+                htmlFor="email"
+              >
+                Email:
+              </label>
+              <div className=" ">
+                <Input
+                  isClearable
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value:
+                        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
+                      message: "Invalid Email Address",
+                    },
+                  })}
+                  placeholder="Enter Your Email"
+                  type="email"
+                  variant="underlined"
+                />
+              </div>
               <div>
-                <label
-                  className="block text-sm text-gray-500 font-medium leading-6 ms-1 "
-                  htmlFor="email"
-                >
-                  Email:
-                </label>
-                <div className=" ">
-                  <Input
-                    isClearable
-                    {...register("email", {
-                      required: "Email is required",
-                      pattern: {
-                        value:
-                          /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
-                        message: "Invalid Email Address",
-                      },
-                    })}
-                    placeholder="Enter Your Email"
-                    type="email"
-                    variant="underlined"
-                  />
-                </div>
-                <div>
-                  {errors.email && (
-                    <p className="mt-2 text-sm text-red-600">
-                      {errors.email.message as string}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <div className="mt-3 mb-5">
-                <label
-                  className="block text-sm text-gray-500 font-medium leading-6 ms-1 "
-                  htmlFor="password"
-                >
-                  Password:
-                </label>
-                <div className="mt-2 ">
-                  <Input
-                    {...register("password", {
-                      required: "Password is required",
-                    })}
-                    className="w-full"
-                    endContent={
-                      <button
-                        aria-label="toggle password visibility"
-                        className="focus:outline-none"
-                        type="button"
-                        onClick={toggleVisibility}
-                      >
-                        {isVisible ? (
-                          <svg
-                            className="size-6"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={1.5}
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        ) : (
-                          <svg
-                            className="size-6"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={1.5}
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                            <path
-                              d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        )}
-                      </button>
-                    }
-                    placeholder="Enter your password"
-                    type={isVisible ? "text" : "password"}
-                    variant="underlined"
-                  />
-                </div>
-                <div>
-                  {errors.password && (
-                    <p className="mt-2 text-sm text-red-600">
-                      {errors.password.message as string}
-                    </p>
-                  )}
-                </div>
+                {errors.email && (
+                  <p className="mt-2 text-sm text-red-600">
+                    {errors.email.message as string}
+                  </p>
+                )}
               </div>
             </div>
 
-            <div className=" flex">
-              <button className="custom-btn w-full " type="submit">
-                Login
-              </button>
-            </div>
-
-            <div className="flex justify-center items-center mt-2">
+            <div className="mt-3 mb-5">
+              <label
+                className="block text-sm text-gray-500 font-medium leading-6 ms-1 "
+                htmlFor="password"
+              >
+                Password:
+              </label>
+              <div className="mt-2 ">
+                <Input
+                  {...register("password", {
+                    required: "Password is required",
+                  })}
+                  className="w-full"
+                  endContent={
+                    <button
+                      aria-label="toggle password visibility"
+                      className="focus:outline-none"
+                      type="button"
+                      onClick={toggleVisibility}
+                    >
+                      {isVisible ? (
+                        <svg
+                          className="size-6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={1.5}
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      ) : (
+                        <svg
+                          className="size-6"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={1.5}
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      )}
+                    </button>
+                  }
+                  placeholder="Enter your password"
+                  type={isVisible ? "text" : "password"}
+                  variant="underlined"
+                />
+              </div>
               <div>
-                <p className="text-sm ">
-                  You do not have an account ?{" "}
-                  <Link
-                    className=" primary-color font-semibold ps-1"
-                    href="/register"
-                  >
-                    Sign Up
-                  </Link>
-                </p>
+                {errors.password && (
+                  <p className="mt-2 text-sm text-red-600">
+                    {errors.password.message as string}
+                  </p>
+                )}
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+
+          <div className=" flex">
+            <button className="custom-btn w-full " type="submit">
+              Login
+            </button>
+          </div>
+
+          <div className="flex justify-center items-center mt-2">
+            <div>
+              <p className="text-sm ">
+                You do not have an account ?{" "}
+                <Link
+                  className=" primary-color font-semibold ps-1"
+                  href="/register"
+                >
+                  Sign Up
+                </Link>
+              </p>
+            </div>
+          </div>
+        </form>
       </div>
-    </>
+    </div>
   );
 };
 
