@@ -24,16 +24,16 @@ const TabsOptions = () => {
   const followersIds = user?.followers;
   const followingIds = user?.following;
   const getFollowers = AllUsers?.data?.filter((user: any) =>
-    followersIds?.includes(user._id),
+    followersIds?.includes(user._id)
   );
   // console.log(getFollowers);
   const getFollowingUsers = AllUsers?.data?.filter((user: any) =>
-    followingIds?.includes(user._id),
+    followingIds?.includes(user._id)
   );
   // console.log(getFollowingUsers);
   const { data } = useGetUserAnalyticsQuery({});
 
-  console.log(data);
+  // console.log(data);
   const analytics = data?.data;
 
   // console.log(analytics);

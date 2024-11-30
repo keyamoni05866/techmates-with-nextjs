@@ -27,9 +27,9 @@ const AllPosts = () => {
   //   console.log(AllPosts);
   return (
     // <div>
-    <div className="my-8 lg:max-w-[800px] lg:mx-auto mx-2">
-      <div className="lg:flex justify-between mb-10">
-        <div className="lg:flex gap-2 grid grid-cols-3 my-2 lg:my-0  ">
+    <div className="my-8  lg:mx-auto mx-2 w-full">
+      <div className=" hidden lg:block mb-10">
+        <div className="lg:flex gap-2 grid grid-cols-3 my-2 lg:my-0   ">
           {selectedCategory && (
             <button
               className="lg:px-4 lg:py-2 py-1 rounded-xl bg-[#9753d3] text-white text-sm"
@@ -48,7 +48,7 @@ const AllPosts = () => {
               }`}
               onClick={() =>
                 setSelectedCategory(
-                  category === selectedCategory ? "All" : category,
+                  category === selectedCategory ? "All" : category
                 )
               }
             >
@@ -56,7 +56,7 @@ const AllPosts = () => {
             </button>
           ))}
         </div>
-        <div className="">
+        {/* <div className="">
           <Input
             classNames={{
               base: "max-w-full sm:max-w-[10rem] h-10",
@@ -72,7 +72,7 @@ const AllPosts = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-        </div>
+        </div> */}
       </div>
 
       {isLoading ? (

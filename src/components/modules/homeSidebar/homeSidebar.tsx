@@ -13,9 +13,9 @@ const HomeSidebar = () => {
   const { data: AllPosts } = useGetAllPostsQuery({});
   const { data: AllUsers } = useGetUsersQuery({});
   return (
-    <div className="mt-4 mb-10 lg:ms-8  ">
-      <div className="lg:fixed">
-        <h4 className="text-3xl font-bold">Popular Author</h4>
+    <div className="mt-4 mb-14   w-full">
+      <div className="lg:fixed  ">
+        <h4 className="text-xl font-bold">Popular Author</h4>
 
         <div className="my-6">
           {AllUsers?.data?.slice(0, 3).map((user: TUser) => (
@@ -62,19 +62,19 @@ const HomeSidebar = () => {
           ))}
         </div>
 
-        <h4 className="text-3xl font-bold">Recommended Tech Posts</h4>
+        <h4 className="text-2xl font-bold">Recommended Tech Posts</h4>
 
-        <div className="mt-3">
+        <div className="mt-3 mb-2">
           {AllPosts?.data?.slice(0, 3).map((post: TPost) => (
             <div
               key={post?._id}
-              className="px-5 py-2 my-3 shadow-md  me-5 rounded-xl"
+              className="px-4 py-2 my-3 shadow-md  me-5 rounded-xl"
             >
               <div>
                 <Link href={`/${post?._id}`}>
-                  <h4 className="text-lg font-bold">{post?.title}</h4>
+                  <h4 className="text-md font-bold">{post?.title}</h4>
                 </Link>
-                <div className="text-md font-light text-justify  ">
+                <div className="text-sm font-light text-justify  ">
                   <QuilToNormalHTML content={post?.content} maxLength={40} />
                 </div>
               </div>

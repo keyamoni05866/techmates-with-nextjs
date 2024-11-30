@@ -16,15 +16,15 @@ import logo from "@/src/assets/techmatesLogo.png";
 
 export const Navbar = () => {
   return (
-    <NextUINavbar maxWidth="xl">
-      <NavbarBrand>
+    <NextUINavbar maxWidth="xl" className="">
+      <NavbarBrand className="">
         {/* <AcmeLogo /> */}
         <Image
           alt="website logo"
           className="rounded-full bg-gray-200 "
-          height={50}
+          height={40}
           src={logo}
-          width={50}
+          width={40}
         />
         <p className=" text-xl text-gray-600 ms-2 ">
           Tech<span className="primary-color">Mates</span>
