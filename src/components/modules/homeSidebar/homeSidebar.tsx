@@ -12,6 +12,7 @@ import { useGetUsersQuery } from "@/src/redux/Api/UserApi/userApi";
 const HomeSidebar = () => {
   const { data: AllPosts } = useGetAllPostsQuery({});
   const { data: AllUsers } = useGetUsersQuery({});
+
   return (
     <div className="mt-4 mb-14   w-full">
       <div className="lg:fixed  ">

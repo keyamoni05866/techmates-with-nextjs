@@ -51,7 +51,7 @@ const Login = () => {
     } catch (err) {
       toast.error(
         "Something Went Wrong!! Please use valid email or provide correct password",
-        { id: toastId, duration: 3000 }
+        { id: toastId, duration: 3000 },
       );
     }
   };
@@ -79,16 +79,16 @@ const Login = () => {
           </h4>
           <div className="flex justify-center lg:justify-end mb-4 mt-5   gap-2  ">
             <button
-              onClick={handleSetUserValue}
-              type="button"
               className="px-3  py-1 border border-gray-500 rounded-2xl text-md hover:bg-[#051c34] hover:text-white  "
+              type="button"
+              onClick={handleSetUserValue}
             >
               User Credentials
             </button>
             <button
-              onClick={handleSetAdminValue}
-              type="button"
               className="px-3 py-1 bg-[#9753d3] hover:bg-[#713f9c] text-white border rounded-2xl text-md"
+              type="button"
+              onClick={handleSetAdminValue}
             >
               Admin Credentials
             </button>
@@ -103,16 +103,8 @@ const Login = () => {
               </label>
               <div className=" ">
                 <Controller
-                  name="email"
                   control={control}
-                  rules={{
-                    required: "Email is required",
-                    pattern: {
-                      value:
-                        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
-                      message: "Invalid Email Address",
-                    },
-                  }}
+                  name="email"
                   render={({ field }) => (
                     <Input
                       isClearable
@@ -122,6 +114,14 @@ const Login = () => {
                       variant="underlined"
                     />
                   )}
+                  rules={{
+                    required: "Email is required",
+                    pattern: {
+                      value:
+                        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
+                      message: "Invalid Email Address",
+                    },
+                  }}
                 />
               </div>
               <div>
@@ -142,16 +142,12 @@ const Login = () => {
               </label>
               <div className="mt-2 ">
                 <Controller
-                  name="password"
                   control={control}
-                  rules={{ required: "Password is required" }}
+                  name="password"
                   render={({ field }) => (
                     <Input
                       {...field}
                       className="w-full"
-                      placeholder="Enter your password"
-                      type={isVisible ? "text" : "password"}
-                      variant="underlined"
                       endContent={
                         <button
                           aria-label="toggle password visibility"
@@ -166,8 +162,12 @@ const Login = () => {
                           )}
                         </button>
                       }
+                      placeholder="Enter your password"
+                      type={isVisible ? "text" : "password"}
+                      variant="underlined"
                     />
                   )}
+                  rules={{ required: "Password is required" }}
                 />
               </div>
               <div>

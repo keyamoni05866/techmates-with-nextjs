@@ -7,9 +7,6 @@ import UserUpdateModal from "../../UI/UserRelatedModal/UserUpdateModal";
 
 import { currentUser } from "@/src/redux/features/auth/authSlice";
 import { useAppSelector } from "@/src/redux/hook";
-
-// import Image from "next/image";
-
 import { useGetUsersPostsQuery } from "@/src/redux/Api/PostApi/postApi";
 import {
   useGetUsersQuery,

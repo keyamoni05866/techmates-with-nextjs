@@ -1,6 +1,6 @@
-import HomeLeftSidebar from "@/src/components/modules/homeLeftSidebar/HomeLeftSidebar";
 import HomeSidebar from "../../../components/modules/homeSidebar/HomeSidebar";
 
+import HomeLeftSidebar from "@/src/components/modules/homeLeftSidebar/HomeLeftSidebar";
 import AllPosts from "@/src/components/modules/AllPosts/AllPosts";
 
 const HomePage = () => {

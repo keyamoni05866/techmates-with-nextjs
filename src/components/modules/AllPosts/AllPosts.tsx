@@ -2,10 +2,8 @@
 
 import { Spinner } from "@nextui-org/spinner";
 import { useState } from "react";
-import { Input } from "@nextui-org/input";
 
 import CardUI from "../../UI/CardUI";
-import { SearchIcon } from "../../icons";
 
 import { TPost } from "@/src/types";
 import { useGetAllPostsQuery } from "@/src/redux/Api/PostApi/postApi";
@@ -48,7 +46,7 @@ const AllPosts = () => {
               }`}
               onClick={() =>
                 setSelectedCategory(
-                  category === selectedCategory ? "All" : category
+                  category === selectedCategory ? "All" : category,
                 )
               }
             >

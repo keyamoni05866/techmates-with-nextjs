@@ -8,6 +8,7 @@ import {
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/link";
 import Image from "next/image";
+import React from "react";
 
 import NavbarDropdown from "./NavbarDropdown";
 import NavbarPostConditional from "./NavbarPostConditional";
@@ -16,21 +17,21 @@ import logo from "@/src/assets/techmatesLogo.png";
 
 export const Navbar = () => {
   return (
-    <NextUINavbar maxWidth="xl" className="">
-      <NavbarBrand className="">
-        {/* <AcmeLogo /> */}
+    <NextUINavbar className="lgt:mt-0 mt-2" maxWidth="xl">
+      <NavbarBrand>
         <Image
           alt="website logo"
-          className="rounded-full bg-gray-200 "
+          className="rounded-full bg-gray-200   lg:block hidden"
           height={40}
           src={logo}
           width={40}
         />
-        <p className=" text-xl text-gray-600 ms-2 ">
+        <p className=" text-xl text-gray-600 ms-2  lg:block hidden   ">
           Tech<span className="primary-color">Mates</span>
         </p>
       </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4 mt-3" justify="center">
+
+      <NavbarContent className=" flex lg:gap-4  lg:justify-center justify-start">
         <NavbarItem>
           <Link aria-current="page" className="block" href="/">
             <svg
@@ -84,8 +85,11 @@ export const Navbar = () => {
           <NavbarDropdown />
         </NavbarItem>
       </NavbarContent>
+
       <NavbarContent justify="end">
-        <NavbarPostConditional />
+        <NavbarItem>
+          <NavbarPostConditional />
+        </NavbarItem>
       </NavbarContent>
     </NextUINavbar>
   );

@@ -11,4 +11,5 @@ export type TUser = {
   number?: string;
   address?: string;
   status: "active" | "blocked";
+  paymentStatus: "paid" | "pending";
 };

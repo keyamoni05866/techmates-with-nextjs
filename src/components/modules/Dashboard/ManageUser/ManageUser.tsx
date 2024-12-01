@@ -67,7 +67,7 @@ const ManageUser = () => {
         <TableColumn>NAME</TableColumn>
         <TableColumn>Email</TableColumn>
         <TableColumn>ROLE</TableColumn>
-        <TableColumn>Verified</TableColumn>
+
         <TableColumn>STATUS</TableColumn>
         <TableColumn>Action</TableColumn>
       </TableHeader>
@@ -87,13 +87,7 @@ const ManageUser = () => {
             <TableCell>{user.name}</TableCell>
             <TableCell>{user.email}</TableCell>
             <TableCell>{user.role}</TableCell>
-            <TableCell>
-              {user.verified === true ? (
-                <span className="text-md font-bold uppercase">Yes</span>
-              ) : (
-                <span className="text-md font-bold uppercase">No</span>
-              )}
-            </TableCell>
+
             <TableCell>
               {user.status === "active" ? (
                 <span className="bg-green-400 px-3 pt-1 pb-2 text-md text-white rounded-2xl  ">

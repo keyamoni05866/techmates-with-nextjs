@@ -1,15 +1,13 @@
 "use client";
 
-import {
-  useGetUserAnalyticsQuery,
-  useGetUsersPostsQuery,
-} from "@/src/redux/Api/PostApi/postApi";
-import { useGetUsersQuery } from "@/src/redux/Api/UserApi/userApi";
-import { currentUser } from "@/src/redux/features/auth/authSlice";
-import { useAppSelector } from "@/src/redux/hook";
 import { Divider } from "@nextui-org/divider";
 import { Image } from "@nextui-org/image";
 import { Link } from "@nextui-org/link";
+
+import { useGetUserAnalyticsQuery } from "@/src/redux/Api/PostApi/postApi";
+import { useGetUsersQuery } from "@/src/redux/Api/UserApi/userApi";
+import { currentUser } from "@/src/redux/features/auth/authSlice";
+import { useAppSelector } from "@/src/redux/hook";
 
 const HomeLeftSidebar = () => {
   const user = useAppSelector(currentUser);
@@ -17,11 +15,13 @@ const HomeLeftSidebar = () => {
   const { data } = useGetUserAnalyticsQuery({});
 
   const analytics = data?.data;
+
   console.log(analytics);
   const { data: AllUsers } = useGetUsersQuery({});
   const verifiedUser = AllUsers?.data?.find((vUser: any) =>
-    user?._id?.includes(vUser._id)
+    user?._id?.includes(vUser._id),
   );
+
   return (
     <div className="   w-full ms-5">
       <div className="lg:fixed lg:top-28 lg:w-[19%]">
@@ -67,7 +67,7 @@ const HomeLeftSidebar = () => {
                 )}
               </div>
             </div>
-            <Link href="/profile" className="text-center flex justify-center">
+            <Link className="text-center flex justify-center" href="/profile">
               <h4 className="text-center hover:underline text-xl mb-4 text-black ">
                 {user?.email}
               </h4>
