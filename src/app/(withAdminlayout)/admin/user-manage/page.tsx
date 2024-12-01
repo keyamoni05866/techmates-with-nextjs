@@ -1,3 +1,5 @@
+"use client";
+
 import ManageUser from "@/src/components/modules/Dashboard/ManageUser/ManageUser";
 const ManagePostPage = () => {
   return (

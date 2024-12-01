@@ -42,7 +42,7 @@ const ManagePost = () => {
     <Table
       isStriped
       aria-label="Example static collection table"
-      className="p-12"
+      className="lg:p-12 p-3"
     >
       <TableHeader>
         <TableColumn>Image</TableColumn>

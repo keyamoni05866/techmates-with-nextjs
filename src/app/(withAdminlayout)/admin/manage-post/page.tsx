@@ -1,3 +1,4 @@
+"use client";
 import ManagePost from "@/src/components/modules/Dashboard/ManagePost/ManagePost";
 
 const ManagePostPage = () => {
