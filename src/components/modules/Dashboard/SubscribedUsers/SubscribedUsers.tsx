@@ -1,7 +1,5 @@
 "use client";
 
-import { useGetUsersQuery } from "@/src/redux/Api/UserApi/userApi";
-import { TUser } from "@/src/types";
 import { Avatar } from "@nextui-org/avatar";
 import { Spinner } from "@nextui-org/spinner";
 import {
@@ -13,11 +11,15 @@ import {
   TableRow,
 } from "@nextui-org/table";
 
+import { TUser } from "@/src/types";
+import { useGetUsersQuery } from "@/src/redux/Api/UserApi/userApi";
+
 const SubscribedUsers = () => {
   const { data: AllUsers, isLoading } = useGetUsersQuery({});
   const paidUsers = AllUsers?.data?.filter(
-    (user: TUser) => user.paymentStatus === "paid"
+    (user: TUser) => user.paymentStatus === "paid",
   );
+
   console.log(paidUsers);
 
   return (

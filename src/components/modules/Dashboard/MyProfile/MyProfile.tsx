@@ -1,21 +1,23 @@
+import { Image } from "@nextui-org/image";
+import React from "react";
+
 import UserUpdateModal from "@/src/components/UI/UserRelatedModal/UserUpdateModal";
 import { currentUser } from "@/src/redux/features/auth/authSlice";
 import { useAppSelector } from "@/src/redux/hook";
-import { Avatar } from "@nextui-org/avatar";
-import { Image } from "@nextui-org/image";
-import React from "react";
+
 // import { Image } from 'next/image';
 
 const MyProfile = () => {
   const user = useAppSelector(currentUser);
+
   return (
     <div className=" p-4 lg:p-10 lg:flex gap-5  lg:justify-center lg:items-center w-full  ">
       <div className=" lg:w-[20%]      border  py-4   rounded-xl lg:h-[230px]">
         <div className="flex items-center justify-center">
           <Image
-            src={user?.profilePicture}
             alt=""
             className="w-[200px] h-[130px]  "
+            src={user?.profilePicture}
           />
         </div>
         <div className="text-center">
