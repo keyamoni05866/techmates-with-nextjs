@@ -12,6 +12,8 @@ import { useAppSelector } from "@/src/redux/hook";
 const HomeLeftSidebar = () => {
   const user = useAppSelector(currentUser);
 
+  const targetLink = user?.role === "admin" ? "/admin" : "/profile";
+
   const { data } = useGetUserAnalyticsQuery({});
 
   const analytics = data?.data;
@@ -19,16 +21,16 @@ const HomeLeftSidebar = () => {
   console.log(analytics);
   const { data: AllUsers } = useGetUsersQuery({});
   const verifiedUser = AllUsers?.data?.find((vUser: any) =>
-    user?._id?.includes(vUser._id),
+    user?._id?.includes(vUser._id)
   );
 
   return (
     <div className="   w-full ms-5">
       <div className="lg:fixed lg:top-28 lg:w-[19%]">
-        <div className="border-2 border-solid shadow-md  ">
+        <div className="border-2 border-solid shadow-sm rounded-md  ">
           <div className="bg-gray-300 h-[100px] flex items-center justify-center ">
             <div className="bg-gray-100 rounded-full mt-24 ">
-              <Link href="/profile">
+              <Link href={targetLink}>
                 <Image
                   alt="Profile Picture"
                   className=" w-[120px] h-[100px]  rounded-full "
@@ -40,7 +42,7 @@ const HomeLeftSidebar = () => {
           <div className="mt-14 mb-10">
             <div className=" flex justify-center items-center gap-1   mt-2">
               <div>
-                <Link href="/profile">
+                <Link href={targetLink}>
                   <h4 className="text-2xl primary-color font-semibold ">
                     {user?.name}
                   </h4>
@@ -67,7 +69,7 @@ const HomeLeftSidebar = () => {
                 )}
               </div>
             </div>
-            <Link className="text-center flex justify-center" href="/profile">
+            <Link className="text-center flex justify-center" href={targetLink}>
               <h4 className="text-center hover:underline text-xl mb-4 text-black ">
                 {user?.email}
               </h4>

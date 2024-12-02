@@ -45,7 +45,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
         </button>
         {/* Main content */}
 
-        <div className="bg-white w-full mt-3 rounded-xl ">{children}</div>
+        <div className="bg-[#FBFBFD] w-full mt-3 rounded-xl ">{children}</div>
       </div>
 
       {isSidebarOpen && (

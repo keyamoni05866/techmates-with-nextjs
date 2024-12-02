@@ -15,7 +15,7 @@ const DashboardHeader = () => {
   };
 
   return (
-    <div className="bg-white h-[80px] w-full  rounded-xl">
+    <div className="bg-[#FBFBFD] h-[80px] w-full  rounded-xl">
       <div className="flex justify-between items-center mx-5">
         <div className="flex items-center gap-2 pt-3">
           <Avatar
@@ -34,9 +34,9 @@ const DashboardHeader = () => {
         </div>
 
         <div className="pt-4">
-          <Button color="primary" onClick={handleLogOut}>
+          <button className="custom-btn" onClick={handleLogOut}>
             LogOut
-          </Button>
+          </button>
         </div>
       </div>
     </div>

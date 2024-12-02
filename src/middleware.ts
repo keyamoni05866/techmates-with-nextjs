@@ -13,7 +13,6 @@ const roleBasedRoutes = {
   admin: [/^\/admin/],
 };
 
-// This function can be marked `async` if using `await` inside
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -28,6 +27,9 @@ export default async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL("/login", request.url));
     }
   }
+  if (pathname === "/") {
+    return NextResponse.next();
+  }
 
   if (user?.role && roleBasedRoutes[user?.role as Role]) {
     const routes = roleBasedRoutes[user?.role as Role];
@@ -40,9 +42,9 @@ export default async function middleware(request: NextRequest) {
   return NextResponse.redirect(new URL("/", request.url));
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
   matcher: [
+    "/",
     "/profile",
     "/profile/:page*",
     "/admin/:page*",
