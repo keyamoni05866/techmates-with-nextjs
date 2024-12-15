@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .primary-color {
-  color: #9753d3;
+  color: #ab51e3;
 }
 
 .custom-btn {
@@ -13,7 +13,7 @@
   text-align: center;
   text-decoration: none;
   color: rgb(243, 243, 243);
-  background-color: #9753d3;
+  background-color: #8b2fc9;
   border: none;
   border-radius: 20px;
   font: bold;
@@ -23,7 +23,7 @@
     transform 0.3s ease;
 }
 .custom-btn:hover {
-  background-color: #6a3a94;
+  background-color: #6818a5;
 }
 .custom-bg {
   background-color: #efedf1;

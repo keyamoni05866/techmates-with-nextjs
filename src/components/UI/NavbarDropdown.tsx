@@ -24,6 +24,7 @@ export default function NavbarDropdown() {
   const handleLogOut = () => {
     dispatch(logOutUser());
     Cookies.remove("token");
+    router.push("/login");
   };
 
   return (

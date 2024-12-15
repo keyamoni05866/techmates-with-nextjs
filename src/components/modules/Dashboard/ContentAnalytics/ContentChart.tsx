@@ -5,8 +5,6 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-  LineChart,
-  Line,
   BarChart,
   Legend,
   Bar,

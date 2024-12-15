@@ -21,7 +21,7 @@ const HomeLeftSidebar = () => {
   console.log(analytics);
   const { data: AllUsers } = useGetUsersQuery({});
   const verifiedUser = AllUsers?.data?.find((vUser: any) =>
-    user?._id?.includes(vUser._id)
+    user?._id?.includes(vUser._id),
   );
 
   return (

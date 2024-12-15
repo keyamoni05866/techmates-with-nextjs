@@ -1,9 +1,10 @@
 "use client";
 
-import { useGetAllUsersPostsAnalyticsQuery } from "@/src/redux/Api/PostApi/postApi";
 import { Spinner } from "@nextui-org/spinner";
 
 import ContentChart from "./ContentChart";
+
+import { useGetAllUsersPostsAnalyticsQuery } from "@/src/redux/Api/PostApi/postApi";
 
 const ContentAnalytics = () => {
   const { data, isLoading } = useGetAllUsersPostsAnalyticsQuery({});

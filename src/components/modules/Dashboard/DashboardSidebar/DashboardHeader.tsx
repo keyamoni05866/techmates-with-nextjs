@@ -1,17 +1,20 @@
 "use client";
 
 import { Avatar } from "@nextui-org/avatar";
-import { Button } from "@nextui-org/button";
 import Cookies from "js-cookie";
 
 import { useAppDispatch, useAppSelector } from "@/src/redux/hook";
 import { currentUser, logOutUser } from "@/src/redux/features/auth/authSlice";
+import { useRouter } from "next/navigation";
+// import { useRouter } from "next/router";
 const DashboardHeader = () => {
   const user = useAppSelector(currentUser);
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const handleLogOut = () => {
     dispatch(logOutUser());
     Cookies.remove("token");
+    router.push("/login");
   };
 
   return (
