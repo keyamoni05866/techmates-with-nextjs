@@ -89,26 +89,26 @@ const Login = () => {
           <button className="custom-btn">Let's Start</button>
         </div>
 
-        <div className="flex items-center justify-center p-8 lg:p-20">
+        <div className="flex items-center justify-center pt-20  px-3  lg:p-20">
           <form
             onSubmit={handleSubmit(handleLogin)}
-            className="bg-white bg-opacity-100 p-8 rounded-lg shadow-md w-full max-w-md text-gray-800"
+            className="bg-white bg-opacity-100 p-8 rounded-lg shadow-md w-full lg:max-w-md text-gray-800"
           >
             <h2 className="text-3xl font-semibold primary-color ">Login!!!</h2>
             <p className="text-[12px] text-gray-500 ms-1">
               Log into your account.
             </p>
 
-            <div className="flex justify-center lg:justify-start mb-4 mt-5   gap-2  ">
+            <div className="flex justify-start mb-4 mt-5   gap-2  ">
               <button
-                className="px-3  py-1 border border-gray-500 rounded-2xl text-md hover:bg-[#051c34] hover:text-white  "
+                className="lg:px-3 px-2  py-1 border border-gray-500 rounded-2xl text-md hover:bg-[#051c34] hover:text-white  "
                 type="button"
                 onClick={handleSetUserValue}
               >
                 User Credentials
               </button>
               <button
-                className="px-3 py-1 bg-[#9753d3] hover:bg-[#713f9c] text-white border rounded-2xl text-md"
+                className="lg:px-3 py-1 px-2 bg-[#9753d3] hover:bg-[#713f9c] text-white border rounded-2xl text-md"
                 type="button"
                 onClick={handleSetAdminValue}
               >

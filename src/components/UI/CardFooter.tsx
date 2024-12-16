@@ -1,3 +1,5 @@
+"use client";
+
 import { toast } from "sonner";
 
 import CreateCommentModal from "./CommentModal/CreateCommentModal";
@@ -5,17 +7,26 @@ import ShareModal from "./ShareModal/ShareModal";
 
 import { TPost } from "@/src/types";
 import { useVotePostMutation } from "@/src/redux/Api/PostApi/postApi";
+import { useEffect, useState } from "react";
+import { useAppSelector } from "@/src/redux/hook";
+import { currentUser } from "@/src/redux/features/auth/authSlice";
 
 const CardFooter = ({ post }: { post: TPost }) => {
-  const { _id: postId } = post;
+  const user = useAppSelector(currentUser);
+  const currentUserId = user?._id;
+  const { _id: postId, VotedUsers } = post;
   const [vote] = useVotePostMutation();
+  const [isVoted, setIsVoted] = useState(false);
 
+  useEffect(() => {
+    const hasVoted = VotedUsers?.includes(currentUserId as string);
+    setIsVoted(hasVoted || false);
+  }, [VotedUsers, currentUserId]);
   const handleVote = async (postId: string) => {
     console.log(postId);
     try {
-      const res = await vote(postId).unwrap();
-
-      toast.success(`${res.message}`, { duration: 1000 });
+      await vote(postId).unwrap();
+      setIsVoted((prev) => !prev);
     } catch (error: any) {
       toast.error(error.data.message, { duration: 3000 });
     }
@@ -25,7 +36,7 @@ const CardFooter = ({ post }: { post: TPost }) => {
     <>
       <button className="flex items-center" onClick={() => handleVote(postId)}>
         <svg
-          className="lg:size-6 size-5"
+          className={`lg:size-6 size-5 ${isVoted ? "text-blue-500" : "text-gray-500"}`}
           fill="none"
           stroke="currentColor"
           strokeWidth={1.5}
@@ -38,7 +49,10 @@ const CardFooter = ({ post }: { post: TPost }) => {
             strokeLinejoin="round"
           />
         </svg>
-        <p className=" text-lg font-semibold ms-1 mt-1">Vote</p>
+        <p className=" text-lg font-semibold ms-1 mt-1">
+          {" "}
+          {isVoted ? "Voted" : "Vote"}
+        </p>
       </button>
 
       <CreateCommentModal post={post} />

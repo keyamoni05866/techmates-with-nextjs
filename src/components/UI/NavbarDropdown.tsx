@@ -33,7 +33,21 @@ export default function NavbarDropdown() {
         <div>
           <Dropdown>
             <DropdownTrigger>
-              <Avatar size="sm" src={user?.profilePicture} />
+              <div className="lg:border-[2px] border-[#a697b3] px-3 py-1 rounded-3xl lg:flex justify-center items-center gap-3  cursor-pointer  ">
+                <Avatar
+                  size="sm"
+                  src={user?.profilePicture}
+                  className="lg:mt-0 mt-2"
+                />
+                <div>
+                  <h4 className="hidden lg:block text-lg font-semibold">
+                    {user?.name}
+                  </h4>
+                  <h4 className=" block lg:hidden text-gray-400 text-[14px] text-center ">
+                    Me
+                  </h4>
+                </div>
+              </div>
             </DropdownTrigger>
             <DropdownMenu aria-label="Static Actions">
               {user.role === "admin" ? (
@@ -62,7 +76,6 @@ export default function NavbarDropdown() {
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
-          <h4 className="text-gray-400 text-[14px] text-center ">Me</h4>
         </div>
       )}
     </div>

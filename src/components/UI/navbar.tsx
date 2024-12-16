@@ -14,10 +14,13 @@ import NavbarDropdown from "./NavbarDropdown";
 import NavbarPostConditional from "./NavbarPostConditional";
 
 import logo from "@/src/assets/techmatesLogo.png";
+import { usePathname } from "next/navigation";
 
 export const Navbar = () => {
+  const pathname = usePathname();
+  const isActive = (path: string) => pathname === path;
   return (
-    <NextUINavbar className="lgt:mt-0 mt-2" maxWidth="xl">
+    <NextUINavbar className="lgt:mt-0  " maxWidth="xl" isBordered>
       <NavbarBrand>
         <Image
           alt="website logo"
@@ -31,9 +34,15 @@ export const Navbar = () => {
         </p>
       </NavbarBrand>
 
-      <NavbarContent className=" flex lg:gap-4  lg:justify-center justify-start">
+      <NavbarContent className=" flex lg:gap-14  justify-start   mt-3">
         <NavbarItem>
-          <Link aria-current="page" className="block" href="/">
+          <Link
+            className={`block  ${
+              isActive("/") ? " primary-color" : "text-gray-500 "
+            }`}
+            aria-current="page"
+            href="/"
+          >
             <svg
               height="30"
               viewBox="0 0 16 16"
@@ -81,14 +90,15 @@ export const Navbar = () => {
             </h4>
           </Link>
         </NavbarItem>
-        <NavbarItem className="pb-1">
+        {/* <NavbarItem className=" hidden sm:visible pb-2 mt-1">
           <NavbarDropdown />
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
 
-      <NavbarContent justify="end">
+      <NavbarContent justify="end" className="lg:me-20 me-16">
         <NavbarItem>
-          <NavbarPostConditional />
+          <NavbarDropdown />
+          {/* <NavbarPostConditional /> */}
         </NavbarItem>
       </NavbarContent>
     </NextUINavbar>

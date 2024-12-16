@@ -84,7 +84,7 @@ const CardUI = ({ post }: { post: TPost }) => {
       <Divider />
 
       {/* vote, comment share sections */}
-      <div className="flex justify-between mx-3  lg:mx-10 my-4">
+      <div className="flex justify-between items-center mx-3  lg:mx-10 my-4">
         <CardFooter post={post} />
       </div>
     </Card>

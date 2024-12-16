@@ -8,7 +8,7 @@ export type TPost = {
   category: string;
   author: TUser;
   Votes?: number;
-  VotedUsers?: [];
+  VotedUsers?: string[];
   isPremium: boolean;
   comments?: [];
   updatedAt?: string;
