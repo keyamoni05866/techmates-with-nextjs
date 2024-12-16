@@ -34,10 +34,10 @@ const CardUI = ({ post }: { post: TPost }) => {
           </Link>
           <div>
             <Link href={`/singleUser/${authorId}`}>
-              <h4 className="text-xl">{name}</h4>
+              <h4 className=" text-md lg:text-xl">{name}</h4>
             </Link>
 
-            <h4 className="text-sm text-gray-500 ">
+            <h4 className="text-[12px] lg:text-sm text-gray-500 ">
               {new Date(post.createdAt!).toLocaleTimeString("en-US", {
                 hour12: true,
                 timeZone: "Asia/Dhaka",
@@ -56,10 +56,10 @@ const CardUI = ({ post }: { post: TPost }) => {
 
       <CardBody className="">
         <Link href={`/${postId}`}>
-          <h4 className="text-2xl font-bold">{title}</h4>
+          <h4 className="lg:text-2xl text-xl font-semibold">{title}</h4>
         </Link>
 
-        <div className="text-lg font-light my-4 text-justify pe-4 ">
+        <div className="lg:text-lg font-light my-2 lg:my-4 text-justify pe-4 ">
           <Link href={`/${postId}`}>
             <QuilToNormalHTML content={content} maxLength={220} />
           </Link>
@@ -84,7 +84,7 @@ const CardUI = ({ post }: { post: TPost }) => {
       <Divider />
 
       {/* vote, comment share sections */}
-      <div className="flex justify-between items-center mx-3  lg:mx-10 my-4">
+      <div className="flex justify-between items-center mx-3  lg:mx-10 my-3 ">
         <CardFooter post={post} />
       </div>
     </Card>

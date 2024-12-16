@@ -18,17 +18,17 @@ const TabsOptions = () => {
   const { data: usersPosts, isLoading } = useGetUsersPostsQuery({});
   const user = useAppSelector(currentUser);
   // console.log(user?.followers);
-
+  // lg:fixed lg:z-20 lg:ms-4
   const { data: AllUsers, isLoading: UserLoading } = useGetUsersQuery({});
   // console.log(AllUsers?.data);
   const followersIds = user?.followers;
   const followingIds = user?.following;
   const getFollowers = AllUsers?.data?.filter((user: any) =>
-    followersIds?.includes(user._id),
+    followersIds?.includes(user._id)
   );
   // console.log(getFollowers);
   const getFollowingUsers = AllUsers?.data?.filter((user: any) =>
-    followingIds?.includes(user._id),
+    followingIds?.includes(user._id)
   );
   // console.log(getFollowingUsers);
   const { data } = useGetUserAnalyticsQuery({});
@@ -40,7 +40,7 @@ const TabsOptions = () => {
   return (
     <Tabs
       aria-label="Tabs variants"
-      className="flex justify-center lg:fixed lg:z-20 lg:ms-4  "
+      className="flex justify-start  mt-72  "
       variant="solid"
     >
       <Tab
@@ -66,7 +66,7 @@ const TabsOptions = () => {
           </div>
         }
       >
-        <div className="lg:mt-16 mt-4 mb-6 max-w-[800px] mx-auto ">
+        <div className="lg:mt-8 mt-4 mb-6 max-w-[800px]  ">
           {isLoading ? (
             <div className="flex justify-center items-center h-64">
               <Spinner color="secondary" />
@@ -107,7 +107,7 @@ const TabsOptions = () => {
           </div>
         }
       >
-        <div className="lg:mt-16 mt-4  mx-auto ">
+        <div className="lg:mt-8 mt-4  mx-auto ">
           {UserLoading ? (
             <div className="flex justify-center items-center h-64">
               <Spinner color="secondary" />
@@ -148,7 +148,7 @@ const TabsOptions = () => {
           </div>
         }
       >
-        <div className="lg:mt-16 mt-4  mx-auto ">
+        <div className="lg:mt-8 mt-4  mx-auto ">
           {UserLoading ? (
             <div className="flex justify-center items-center h-64">
               <Spinner color="secondary" />
@@ -189,7 +189,7 @@ const TabsOptions = () => {
           </div>
         }
       >
-        <div className="lg:mt-16 mt-4  mx-auto ">
+        <div className="lg:mt-8 mt-4  mx-auto ">
           <div className="lg:flex   gap-6  rounded-2xl mt-10 justify-center items-center mb-10">
             <div className="shadow-md rounded-xl">
               <div className="p-10 text-center">

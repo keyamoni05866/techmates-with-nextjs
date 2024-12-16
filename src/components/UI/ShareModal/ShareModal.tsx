@@ -25,7 +25,7 @@ const ShareModal = ({ post }: { post: TPost }) => {
     switch (plateForm) {
       case "facebook":
         shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-          window.location.href,
+          window.location.href
         )}`;
         break;
       case "twitter":
@@ -47,7 +47,7 @@ const ShareModal = ({ post }: { post: TPost }) => {
   };
 
   return (
-    <div>
+    <div className="lg:pt-0 pt-1">
       <button className="flex items-center" onClick={onOpen}>
         <svg
           className="lg:size-6 size-5"
@@ -63,7 +63,7 @@ const ShareModal = ({ post }: { post: TPost }) => {
             strokeLinejoin="round"
           />
         </svg>
-        <p className=" text-lg font-semibold ms-1 mt-1">Share</p>
+        <p className="text-md lg:text-lg font-semibold ms-1 mt-1">Share</p>
       </button>
 
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>

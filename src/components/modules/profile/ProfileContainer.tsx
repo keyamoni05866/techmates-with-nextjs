@@ -5,11 +5,11 @@ import TabsOptions from "./Tabs";
 
 const ProfileContainer = () => {
   return (
-    <div className="lg:flex lg:justify-between  gap-6 lg:mx-8 mt-10 mb-10 lg:mb-0  mx-3 ">
-      <div className="lg:w-[30%] w-full mb-5 mx-auto ">
+    <div className=" max-w-4xl mx-auto mt-8 min-h-screen   ">
+      <div className=" w-full mb-5 mx-auto ">
         <Profile />
       </div>
-      <div className=" lg:w-[70%] w-full  mb-10 ">
+      <div className="  w-full  mb-10 ">
         <TabsOptions />
       </div>
     </div>

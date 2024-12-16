@@ -34,7 +34,7 @@ export const Navbar = () => {
         </p>
       </NavbarBrand>
 
-      <NavbarContent className=" flex lg:gap-14  justify-start   mt-3">
+      <NavbarContent className=" flex lg:gap-14  justify-start   ">
         <NavbarItem>
           <Link
             className={`block  ${

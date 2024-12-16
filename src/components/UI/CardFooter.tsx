@@ -34,7 +34,7 @@ const CardFooter = ({ post }: { post: TPost }) => {
 
   return (
     <>
-      <button className="flex items-center" onClick={() => handleVote(postId)}>
+      <button className="flex items-center " onClick={() => handleVote(postId)}>
         <svg
           className={`lg:size-6 size-5 ${isVoted ? "text-blue-500" : "text-gray-500"}`}
           fill="none"
@@ -49,7 +49,7 @@ const CardFooter = ({ post }: { post: TPost }) => {
             strokeLinejoin="round"
           />
         </svg>
-        <p className=" text-lg font-semibold ms-1 mt-1">
+        <p className=" text-md lg:text-lg font-semibold ms-1 mt-1">
           {" "}
           {isVoted ? "Voted" : "Vote"}
         </p>

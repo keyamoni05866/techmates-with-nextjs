@@ -85,7 +85,7 @@ const Register = () => {
             with other enthusiasts, share your expertise, and learn from the
             best
           </p>
-          <button className="custom-btn">Let's Start</button>
+          <button className="custom-btn">Lets Start</button>
         </div>
 
         <div className="flex items-center justify-center p-8 lg:p-20">

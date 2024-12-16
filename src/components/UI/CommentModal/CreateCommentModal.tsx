@@ -31,8 +31,8 @@ const CreateCommentModal = ({ post }: { post: TPost }) => {
   };
 
   return (
-    <div>
-      <button className="flex items-center" onClick={onOpen}>
+    <div className="lg:pt-0 pt-2">
+      <button className="flex items-center " onClick={onOpen}>
         <svg
           className="lg:size-6 size-5"
           fill="none"
@@ -47,7 +47,7 @@ const CreateCommentModal = ({ post }: { post: TPost }) => {
             strokeLinejoin="round"
           />
         </svg>
-        <p className=" text-lg font-semibold ms-1 ">Comment</p>
+        <p className=" text-md lg:text-lg font-semibold ms-1 ">Comment</p>
       </button>
 
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>

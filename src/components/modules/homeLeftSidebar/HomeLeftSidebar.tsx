@@ -21,14 +21,19 @@ const HomeLeftSidebar = () => {
   console.log(analytics);
   const { data: AllUsers } = useGetUsersQuery({});
   const verifiedUser = AllUsers?.data?.find((vUser: any) =>
-    user?._id?.includes(vUser._id),
+    user?._id?.includes(vUser._id)
   );
 
   return (
     <div className="   w-full ms-5">
-      <div className="lg:fixed lg:top-28 lg:w-[19%]">
+      <div className="lg:fixed  lg:w-[19%]">
         <div className="border-2 border-solid shadow-sm rounded-md  ">
-          <div className="bg-gray-300 h-[100px] flex items-center justify-center ">
+          <div
+            className="bg-gray-300 h-[100px] flex items-center justify-center "
+            style={{
+              backgroundImage: `url(https://tse1.mm.bing.net/th?id=OIP.xLh7BfYiyq0DY2dlTEqhfgHaEo&pid=Api&P=0&h=220)`,
+            }}
+          >
             <div className="bg-gray-100 rounded-full mt-24 ">
               <Link href={targetLink}>
                 <Image

@@ -14,7 +14,7 @@ const HomeSidebar = () => {
   const { data: AllUsers } = useGetUsersQuery({});
 
   return (
-    <div className="mt-4 mb-14   w-full">
+    <div className="mb-14   w-full">
       <div className="lg:fixed  ">
         <h4 className="text-xl font-bold">Popular Author</h4>
 

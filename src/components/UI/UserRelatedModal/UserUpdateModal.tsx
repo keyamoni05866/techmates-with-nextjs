@@ -74,11 +74,11 @@ const UserUpdateModal = () => {
   return (
     <div>
       <button
-        className="custom-outline-btn !text-md  flex justify-center items-center  "
+        className="custom-btn  flex  items-center justify-center  "
         onClick={onOpen}
       >
         <svg
-          className="size-4"
+          className="size-5 "
           fill="none"
           stroke="currentColor"
           strokeWidth={1.5}
@@ -91,7 +91,7 @@ const UserUpdateModal = () => {
             strokeLinejoin="round"
           />
         </svg>
-        Edit Profile{" "}
+        <h4 className="mt-1"> Edit Profile </h4>
       </button>
 
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
