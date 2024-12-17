@@ -78,7 +78,7 @@ const Login = () => {
 
       <div className="relative z-10 lg:grid  lg:grid-cols-2 h-full text-white">
         <div className=" hidden lg:flex flex-col justify-center items-start px-10 lg:ps-24 space-y-5">
-          <h1 className="text-2xl lg:text-5xl font-bold">
+          <h1 className="text-2xl lg:text-4xl font-bold">
             Connect, Learn, and <span className="primary-color">Share!!!</span>
           </h1>
           <p className="text-lg lg:text-xl">
@@ -101,14 +101,14 @@ const Login = () => {
 
             <div className="flex justify-start mb-4 mt-5   gap-2  ">
               <button
-                className="lg:px-3 px-2  py-1 border border-gray-500 rounded-2xl text-md hover:bg-[#051c34] hover:text-white  "
+                className="custom-outline-btn  "
                 type="button"
                 onClick={handleSetUserValue}
               >
                 User Credentials
               </button>
               <button
-                className="lg:px-3 py-1 px-2 bg-[#9753d3] hover:bg-[#713f9c] text-white border rounded-2xl text-md"
+                className="custom-btn"
                 type="button"
                 onClick={handleSetAdminValue}
               >

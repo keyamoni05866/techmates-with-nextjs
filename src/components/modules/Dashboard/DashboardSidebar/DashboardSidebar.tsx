@@ -38,7 +38,7 @@ const DashboardSidebar = () => {
       <div className=" pt-24 px-3 ">
         <div className=" ">
           <CustomLink
-            activeClassName=" bg-[#9753d3] flex items-center gap-4 ps-2   text-lg  py-2 rounded-md   "
+            activeClassName=" bg-[#14746f] flex items-center gap-4 ps-2   text-lg  py-2 rounded-md   "
             href="/admin"
           >
             <svg
@@ -60,7 +60,7 @@ const DashboardSidebar = () => {
         </div>
         <div className="">
           <CustomLink
-            activeClassName="bg-[#9753d3] flex items-center gap-4 ps-2   text-lg  py-2 rounded-md  "
+            activeClassName="bg-[#14746f] flex items-center gap-4 ps-2   text-lg  py-2 rounded-md  "
             href="/admin/my-profile"
           >
             <svg
@@ -82,7 +82,7 @@ const DashboardSidebar = () => {
         </div>
         <div className="">
           <CustomLink
-            activeClassName="bg-[#9753d3] flex items-center gap-4 ps-2   text-lg  py-2 rounded-md  "
+            activeClassName="bg-[#14746f] flex items-center gap-4 ps-2   text-lg  py-2 rounded-md  "
             href="/admin/content-analytics"
           >
             <svg
@@ -104,7 +104,7 @@ const DashboardSidebar = () => {
         </div>
         <div className="">
           <CustomLink
-            activeClassName="bg-[#9753d3] flex items-center gap-4 ps-2   text-lg  py-2 rounded-md "
+            activeClassName="bg-[#14746f] flex items-center gap-4 ps-2   text-lg  py-2 rounded-md "
             href="/admin/user-manage"
           >
             <svg
@@ -126,7 +126,7 @@ const DashboardSidebar = () => {
         </div>
         <div className="">
           <CustomLink
-            activeClassName="bg-[#9753d3] flex items-center gap-4 ps-2   text-lg  py-2 rounded-md  "
+            activeClassName="bg-[#14746f] flex items-center gap-4 ps-2   text-lg  py-2 rounded-md  "
             href="/admin/manage-post"
           >
             <svg
@@ -148,7 +148,7 @@ const DashboardSidebar = () => {
         </div>
         <div className="">
           <CustomLink
-            activeClassName="bg-[#9753d3] flex items-center gap-4 ps-2   text-lg  py-2 rounded-md "
+            activeClassName="bg-[#14746f] flex items-center gap-4 ps-2   text-lg  py-2 rounded-md "
             href="/admin/subscribed-users"
           >
             <svg

@@ -33,7 +33,7 @@ const DashboardChart: FC<AnalyticsChartProps> = ({ data }) => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="posts" fill="#9753d3" />
+        <Bar dataKey="posts" fill="#14746f" />
         <Bar dataKey="users" fill="#82ca9d" />
       </BarChart>
     </ResponsiveContainer>

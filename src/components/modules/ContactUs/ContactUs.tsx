@@ -220,10 +220,7 @@ const ContactUs = () => {
                 </div>
               </div>
               <div className=" flex justify-end pb-3">
-                <button
-                  className=" w-full  mt-5    custom-outline-btn "
-                  type="submit"
-                >
+                <button className=" w-[50%]  mt-5    custom-btn " type="submit">
                   Submit
                 </button>
               </div>

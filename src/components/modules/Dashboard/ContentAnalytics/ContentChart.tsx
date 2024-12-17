@@ -35,7 +35,7 @@ const ContentChart: FC<AnalyticsChartProps> = ({ data }) => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="votes" fill="#9753d3" />
+        <Bar dataKey="votes" fill="#14746f" />
         <Bar dataKey="comments" fill="#82ca9d" />
         <Bar dataKey="views" fill="#1A1A1D" />
       </BarChart>

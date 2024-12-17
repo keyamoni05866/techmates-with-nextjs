@@ -33,14 +33,14 @@ export default function NavbarDropdown() {
         <div>
           <Dropdown>
             <DropdownTrigger>
-              <div className="lg:border-[2px] border-[#a697b3] px-3 py-1 rounded-3xl lg:flex justify-center items-center gap-3  cursor-pointer  ">
+              <div className="lg:border-[2px] border-[#036666] px-2 py-1 rounded-3xl lg:flex justify-center items-center gap-3  cursor-pointer  ">
                 <Avatar
                   size="sm"
                   src={user?.profilePicture}
                   className="lg:mt-0 mt-2"
                 />
                 <div>
-                  <h4 className="hidden lg:block text-lg font-semibold">
+                  <h4 className="hidden lg:block text-md font-semibold">
                     {user?.name}
                   </h4>
                   <h4 className=" block lg:hidden text-gray-400 text-[14px] text-center ">
@@ -66,12 +66,7 @@ export default function NavbarDropdown() {
                 </DropdownItem>
               )}
 
-              <DropdownItem
-                key="delete"
-                className="text-danger"
-                color="danger"
-                onClick={handleLogOut}
-              >
+              <DropdownItem className="primary-color" onClick={handleLogOut}>
                 Logout
               </DropdownItem>
             </DropdownMenu>

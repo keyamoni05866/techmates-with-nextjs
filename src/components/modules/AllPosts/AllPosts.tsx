@@ -96,7 +96,7 @@ const AllPosts = () => {
         <div className="lg:flex gap-2 grid grid-cols-3 my-2 lg:my-0   ">
           {selectedCategory && (
             <button
-              className="lg:px-4 lg:py-2 py-1 rounded-xl bg-[#9753d3] text-white text-sm"
+              className="lg:px-4 lg:py-2 py-1 rounded-xl bg-[#14746f] text-white text-sm"
               onClick={() => setSelectedCategory("All")}
             >
               All

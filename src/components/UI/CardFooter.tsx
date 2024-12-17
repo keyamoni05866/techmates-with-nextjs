@@ -36,7 +36,7 @@ const CardFooter = ({ post }: { post: TPost }) => {
     <>
       <button className="flex items-center " onClick={() => handleVote(postId)}>
         <svg
-          className={`lg:size-6 size-5 ${isVoted ? "text-blue-500" : "text-gray-500"}`}
+          className={`lg:size-6 size-5 ${isVoted ? "primary-color" : "text-gray-500"}`}
           fill="none"
           stroke="currentColor"
           strokeWidth={1.5}

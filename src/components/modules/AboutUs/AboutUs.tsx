@@ -12,7 +12,7 @@ const AboutUs = () => {
         </div>
         <div className="lg:w-[50%] lg:mt-10 lg:px-0 px-2">
           <h4 className="lg:text-[50px] text-2xl ">Our Company Overview!!!!</h4>
-          <p className="lg:text-lg mt-5 ">
+          <p className="lg:text-md mt-5 ">
             TechMates is a full-stack web platform designed for tech
             enthusiasts, providing a rich collection of expert advice, personal
             experiences, and user-generated content. Whether you were
@@ -30,7 +30,7 @@ const AboutUs = () => {
         </div>
       </div>
       <div className="lg:flex lg:justify-between  lg:mt-4 mt-10 lg:px-0 px-5">
-        <div className="shadow-lg lg:w-[300px] lg:h-[240px] mb-10 p-8 text-justify rounded-lg bg-base-200">
+        <div className="shadow-lg lg:w-[300px] lg:h-[260px] mb-10 p-8 text-justify rounded-lg bg-base-200">
           <p>
             <span className="font-semibold me-2">Founding Year:</span>
             TechMates was founded in 2024 with the goal of simplifying the
@@ -41,7 +41,7 @@ const AboutUs = () => {
             <span className="font-semibold ">Founded:</span> 2024
           </p>
         </div>
-        <div className="shadow-lg lg:w-[300px] lg:h-[240px] mb-8 p-8 text-justify rounded-lg bg-base-200">
+        <div className="shadow-lg lg:w-[300px] lg:h-[260px] mb-8 p-8 text-justify rounded-lg bg-base-200">
           <p>
             <span className="font-semibold me-2">Mission:</span>
             Our mission is to empower individuals with accessible, reliable, and
@@ -50,7 +50,7 @@ const AboutUs = () => {
             problems, enhance productivity.
           </p>
         </div>
-        <div className="shadow-lg lg:w-[300px] lg:h-[240px] mb-8 p-8 text-justify rounded-lg bg-base-200">
+        <div className="shadow-lg lg:w-[300px] lg:h-[260px] mb-8 p-8 text-justify rounded-lg bg-base-200">
           <p>
             <span className="font-semibold me-2">Vision:</span>
             To become the go-to platform for tech enthusiasts worldwide, where
@@ -59,7 +59,7 @@ const AboutUs = () => {
             learning and innovation.
           </p>
         </div>
-        <div className="shadow-lg w-[300px] h-[240px] p-8 text-justify rounded-lg bg-base-200">
+        <div className="shadow-lg w-[300px] h-[260px] p-8 text-justify rounded-lg bg-base-200">
           <p>
             <span className="font-semibold me-2">Our Values:</span>
             We believe that tech knowledge should be easily accessible to
