@@ -15,7 +15,7 @@ const postApi = baseApi.injectEndpoints({
         url: "/post/analytics",
         method: "GET",
       }),
-      providesTags: ["posts"],
+      providesTags: ["posts", "users"],
     }),
     getAllUsersPostsAnalytics: builder.query({
       query: () => ({

@@ -22,7 +22,6 @@ const Login = () => {
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
   const {
-    register,
     handleSubmit,
     setValue,
     control,

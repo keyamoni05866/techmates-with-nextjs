@@ -39,7 +39,7 @@ const Register = () => {
     const userData = {
       ...data,
       profilePicture:
-        "https://tse3.mm.bing.net/th?id=OIP.x8fLW23S9NCHK5xbqWBfNQHaHa&pid=Api&P=0&h=220",
+        "https://tse3.mm.bing.net/th?id=OIP.S5BbE0K1Y1MQkj_RAxnCZQHaHa&pid=Api&P=0&h=220",
     };
 
     try {

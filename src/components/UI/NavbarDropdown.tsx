@@ -33,7 +33,7 @@ export default function NavbarDropdown() {
         <div>
           <Dropdown>
             <DropdownTrigger>
-              <div className="lg:border-[2px] border-[#036666] px-2 py-1 rounded-3xl lg:flex justify-center items-center gap-3  cursor-pointer  ">
+              <div className="lg:border-[2px] border-[#036666] px-2 py-1 rounded-3xl lg:flex justify-center items-center gap-2  cursor-pointer  ">
                 <Avatar
                   size="sm"
                   src={user?.profilePicture}

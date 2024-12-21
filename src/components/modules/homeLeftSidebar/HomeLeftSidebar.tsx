@@ -8,6 +8,7 @@ import { useGetUserAnalyticsQuery } from "@/src/redux/Api/PostApi/postApi";
 import { useGetUsersQuery } from "@/src/redux/Api/UserApi/userApi";
 import { currentUser } from "@/src/redux/features/auth/authSlice";
 import { useAppSelector } from "@/src/redux/hook";
+import { Spinner } from "@nextui-org/spinner";
 
 const HomeLeftSidebar = () => {
   const user = useAppSelector(currentUser);
@@ -18,7 +19,7 @@ const HomeLeftSidebar = () => {
 
   const analytics = data?.data;
 
-  console.log(analytics);
+  // console.log(analytics);
   const { data: AllUsers } = useGetUsersQuery({});
   const verifiedUser = AllUsers?.data?.find((vUser: any) =>
     user?._id?.includes(vUser._id)
