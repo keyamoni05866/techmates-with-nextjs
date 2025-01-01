@@ -26,16 +26,18 @@ export const Navbar = () => {
       isBordered
     >
       <NavbarBrand>
-        <Image
-          alt="website logo"
-          className="rounded-full bg-gray-200   lg:block hidden"
-          height={40}
-          src={logo}
-          width={40}
-        />
-        <p className=" text-xl text-gray-600 ms-2  lg:block hidden   ">
-          Tech<span className="primary-color">Mates</span>
-        </p>
+        <Link href="/">
+          <Image
+            alt="website logo"
+            className="rounded-full bg-gray-200   lg:block hidden"
+            height={40}
+            src={logo}
+            width={40}
+          />
+          <p className=" text-xl text-gray-600 ms-2  lg:block hidden   ">
+            Tech<span className="primary-color">Mates</span>
+          </p>
+        </Link>
       </NavbarBrand>
 
       <NavbarContent className=" flex  gap-0 lg:gap-10  justify-start  mt-2">

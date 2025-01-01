@@ -26,8 +26,8 @@ const HomeLeftSidebar = () => {
   );
 
   return (
-    <div className="   w-full ms-5">
-      <div className="lg:fixed  lg:w-[19%]">
+    <div className="   ">
+      <div className="lg:fixed  lg:w-[300px]">
         <div className="border-2 border-solid shadow-sm rounded-md  ">
           <div
             className="bg-gray-300 h-[100px] flex items-center justify-center "
